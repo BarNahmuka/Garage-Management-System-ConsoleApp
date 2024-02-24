@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VechileLogic
 {
-    public class ElectricVehicle : Vehicle
+    public abstract class ElectricVehicle : Vehicle
     {
         float m_BatteryTimeLeftPerHours;
         float m_BatteryTimeMaxPerHours;
@@ -17,13 +17,24 @@ namespace VechileLogic
             m_BatteryTimeMaxPerHours = i_BatteryTimeMaxPerHours;
         }
 
-        public void chargeBattery(float i_HoursToCharge)
+        public void ChargeBattery(float i_HoursToCharge)
         {
             if(i_HoursToCharge + m_BatteryTimeLeftPerHours <= m_BatteryTimeMaxPerHours)
             {
                 m_BatteryTimeLeftPerHours = i_HoursToCharge + m_BatteryTimeLeftPerHours;
-                
+                m_EnergyLeft = (m_BatteryTimeLeftPerHours / m_BatteryTimeLeftPerHours) * 100;
             }
         }
+
+        public float BatteryTimeLeftPerHours
+        {
+            get { return m_BatteryTimeLeftPerHours; }
+        }
+
+        public float BatteryTimeMaxPerHours
+        {
+            get { return m_BatteryTimeMaxPerHours; }
+        }
+
     }
 }

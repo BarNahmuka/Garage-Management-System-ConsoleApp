@@ -10,7 +10,7 @@ namespace VechileLogic
     {
         private String m_Model;
         private String m_LicenseNumber;
-        private float m_EnergyLeft;
+        protected float m_EnergyLeft;
         //private List<Wheels;
 
         public Vehicle(string i_Model, string i_LicenseNumber, float i_EnergyLeft)

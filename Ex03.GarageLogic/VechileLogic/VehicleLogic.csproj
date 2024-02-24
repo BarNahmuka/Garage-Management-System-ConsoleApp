@@ -42,6 +42,7 @@
     <Compile Include="eLiscenseKind.cs" />
     <Compile Include="eNumbersOfDoors.cs" />
     <Compile Include="eStatus.cs" />
+    <Compile Include="GasolineVehicle.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="Wheels.cs" />
   </ItemGroup>
