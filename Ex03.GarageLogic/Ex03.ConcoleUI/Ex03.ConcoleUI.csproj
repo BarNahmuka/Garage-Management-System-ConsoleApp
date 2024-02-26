@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1D1C92C9-4042-4EAF-B042-DC95F7D6218F}</ProjectGuid>
+    <ProjectGuid>{A9EBD670-9E3A-4152-A765-A2D958EBB412}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>VechileLogic</RootNamespace>
-    <AssemblyName>VechileLogic</AssemblyName>
+    <RootNamespace>Ex03.ConcoleUI</RootNamespace>
+    <AssemblyName>Ex03.ConcoleUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,22 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
-    <Compile Include="eCarColor.cs" />
-    <Compile Include="eFuel.cs" />
-    <Compile Include="ElectricCar.cs" />
-    <Compile Include="ElectricMotorcycle.cs" />
-    <Compile Include="ElectricVehicle.cs" />
-    <Compile Include="eLicenseKind.cs" />
-    <Compile Include="eNumbersOfDoors.cs" />
-    <Compile Include="eStatus.cs" />
-    <Compile Include="GasolineCar.cs" />
-    <Compile Include="GasolineMotorcycle.cs" />
-    <Compile Include="Truck.cs" />
-    <Compile Include="GasolineVehicle.cs" />
-    <Compile Include="Motorcycle.cs" />
-    <Compile Include="Vehicle.cs" />
-    <Compile Include="Wheels.cs" />
+    <Compile Include="UI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

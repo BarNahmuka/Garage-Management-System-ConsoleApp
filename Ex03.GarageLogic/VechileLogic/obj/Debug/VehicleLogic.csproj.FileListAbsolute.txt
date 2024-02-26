@@ -1,2 +1,4 @@
 C:\Users\nahmu\source\repos\Ex03.GarageLogic\VechileLogic\obj\Debug\VehicleLogic.csprojAssemblyReference.cache
 C:\Users\nahmu\source\repos\Ex03.GarageLogic\VechileLogic\obj\Debug\VehicleLogic.csproj.CoreCompileInputs.cache
+C:\Users\nahmu\OneDrive\מסמכים\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\VehicleLogic.csprojAssemblyReference.cache
+C:\Users\nahmu\OneDrive\מסמכים\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\VehicleLogic.csproj.CoreCompileInputs.cache

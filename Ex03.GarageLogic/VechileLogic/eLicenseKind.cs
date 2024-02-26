@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VechileLogic
 {
-    public enum eLiscenseKind
+    public enum eLicenseKind
     {
         A1,
         A2,
