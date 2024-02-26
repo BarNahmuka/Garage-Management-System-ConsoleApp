@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VechileLogic
 {
-    internal class Garage
+    public class Garage
     {
         private List<GarageVehicle> m_VehiclesInGarage;
 

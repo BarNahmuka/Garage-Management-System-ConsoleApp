@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.ConcoleUI
 {
-    public enum eCarColor
+    public enum eVehicle
     {
-        Blue = 1,
-        White,
-        Red,
-        Yellow
+        Car = 1,
+        Motorcycle,
+        Truck
     }
 }
