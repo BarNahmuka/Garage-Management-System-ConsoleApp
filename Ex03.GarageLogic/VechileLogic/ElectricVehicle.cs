@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     public abstract class ElectricVehicle : Vehicle
     {
@@ -24,6 +24,10 @@ namespace VechileLogic
                 m_BatteryTimeLeftPerHours = i_HoursToCharge + m_BatteryTimeLeftPerHours;
                 m_EnergyLeft = (m_BatteryTimeLeftPerHours / m_BatteryTimeLeftPerHours) * 100;
             }
+            else
+            {
+                throw new ValueOutOfRangeException(0, m_BatteryTimeMaxPerHours - m_BatteryTimeLeftPerHours);
+            }
         }
 
         public float BatteryTimeLeftPerHours
@@ -34,6 +38,18 @@ namespace VechileLogic
         public float BatteryTimeMaxPerHours
         {
             get { return m_BatteryTimeMaxPerHours; }
+        }
+        public override string ToString()
+        {
+            StringBuilder electricVehicleDataString = new StringBuilder(base.ToString());
+            electricVehicleDataString.AppendLine(
+                string.Format(
+                    "Max battery time: {0}, Current battery time left: {1}, {2}",
+                    m_BatteryTimeLeftPerHours,
+                    m_BatteryTimeMaxPerHours,
+                    base.ToString()));
+
+            return electricVehicleDataString.ToString();
         }
 
     }

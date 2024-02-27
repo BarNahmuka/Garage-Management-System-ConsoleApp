@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30523.141
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleLogic", "VechileLogic\VehicleLogic.csproj", "{1D1C92C9-4042-4EAF-B042-DC95F7D6218F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex03.GarageLogic", "VechileLogic\Ex03.GarageLogic.csproj", "{1D1C92C9-4042-4EAF-B042-DC95F7D6218F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex03.ConcoleUI", "Ex03.ConcoleUI\Ex03.ConcoleUI.csproj", "{A9EBD670-9E3A-4152-A765-A2D958EBB412}"
 EndProject

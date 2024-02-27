@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     class GasolineMotorcycle : GasolineVehicle
     {
@@ -18,6 +18,14 @@ namespace VechileLogic
         public Motorcycle Motorcycle
         {
             get { return m_Motorcycle; }
+        }
+        public override string ToString()
+        {
+            return string.Format(
+                @"{0}
+{1}",
+                base.ToString(),
+                m_Motorcycle.ToString());
         }
     }
 }

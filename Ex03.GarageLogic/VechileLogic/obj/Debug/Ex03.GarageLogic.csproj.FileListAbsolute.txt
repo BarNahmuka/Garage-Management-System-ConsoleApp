@@ -1,0 +1,4 @@
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\Ex03.GarageLogic.csproj.AssemblyReference.cache
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\Ex03.GarageLogic.csproj.CoreCompileInputs.cache
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\VechileLogic.dll
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\VechileLogic.pdb

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{1D1C92C9-4042-4EAF-B042-DC95F7D6218F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>VechileLogic</RootNamespace>
+    <RootNamespace>Ex03.GarageLogic</RootNamespace>
     <AssemblyName>VechileLogic</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="eCarColor.cs" />
+    <Compile Include="eEnergy.cs" />
     <Compile Include="eFuel.cs" />
     <Compile Include="ElectricCar.cs" />
     <Compile Include="ElectricMotorcycle.cs" />
@@ -48,14 +49,18 @@
     <Compile Include="eLicenseKind.cs" />
     <Compile Include="eNumbersOfDoors.cs" />
     <Compile Include="eStatus.cs" />
+    <Compile Include="eVehicle.cs" />
     <Compile Include="Garage.cs" />
     <Compile Include="GarageVehicle.cs" />
+    <Compile Include="GarageVehicleBuilder.cs" />
     <Compile Include="GasolineCar.cs" />
     <Compile Include="GasolineMotorcycle.cs" />
     <Compile Include="Truck.cs" />
     <Compile Include="GasolineVehicle.cs" />
     <Compile Include="Motorcycle.cs" />
+    <Compile Include="ValueOutOfRangeException.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleBuilder.cs" />
     <Compile Include="Wheels.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

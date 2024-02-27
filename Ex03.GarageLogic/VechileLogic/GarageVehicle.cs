@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     public class GarageVehicle
     {
@@ -40,6 +40,33 @@ namespace VechileLogic
         {
             get { return m_Vehicle; }
         }
+        public override string ToString()
+        {
+            return string.Format(
+                @"Owner name: {0}
+Owner phone: {1}
+Car treatment status: {2}
+{3}",
+                m_OwnerName,
+                m_OwnerPhone,
+                m_Status,
+                m_Vehicle.ToString());
+        }
 
+        public override bool Equals(object i_Object)
+        {
+            bool isEquals = false;
+            GarageVehicle objectToCompareTo = i_Object as GarageVehicle;
+            if (objectToCompareTo != null)
+            {
+                isEquals = m_OwnerName == objectToCompareTo.OwnerPhone
+                    && m_OwnerName == objectToCompareTo.OwnerName
+                    && m_Vehicle.Equals(objectToCompareTo.Vehicle);
+            }
+
+            return isEquals;
+        }
     }
+
 }
+

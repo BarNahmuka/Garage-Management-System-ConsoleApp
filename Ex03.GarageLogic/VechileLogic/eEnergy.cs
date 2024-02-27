@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public enum eCarColor
+    public enum eEnergy
     {
-        Blue = 1,
-        White,
-        Red,
-        Yellow
+        Gasoline = 1,
+        electricity
     }
 }

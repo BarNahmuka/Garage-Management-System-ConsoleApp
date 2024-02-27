@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     public abstract class GasolineVehicle : Vehicle
     {
@@ -21,9 +21,20 @@ namespace VechileLogic
 
         public void RefuelTank(float i_LitersToFuel , eFuel i_FuelType)
         {
-            if((m_CurrentGasInTankPerLiter + i_LitersToFuel <= m_MaxGasInTankPerLiter) && i_FuelType == m_GasolineType)
+            if ((m_CurrentGasInTankPerLiter + i_LitersToFuel <= m_MaxGasInTankPerLiter))
             {
-                m_CurrentGasInTankPerLiter = m_CurrentGasInTankPerLiter + i_LitersToFuel;
+                if (i_FuelType == m_GasolineType)
+                {
+                    m_CurrentGasInTankPerLiter = m_CurrentGasInTankPerLiter + i_LitersToFuel;
+                }
+                else
+                {
+                    throw new ArgumentException("Full type selcted not fitting to the vehicle");
+                }
+            }
+            else
+            {
+                throw new ValueOutOfRangeException(0, m_MaxGasInTankPerLiter - m_CurrentGasInTankPerLiter);
             }
         }
 
@@ -40,6 +51,16 @@ namespace VechileLogic
         public float MaxGasInTankPerLiter
         {
             get { return m_MaxGasInTankPerLiter; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format(
+                "Gasoline type: {0}, Current Gasoline amount: {1}, Max Gasoline amount: {2}, {3}",
+                m_GasolineType,
+                m_CurrentGasInTankPerLiter,
+                m_MaxGasInTankPerLiter,
+                base.ToString());
         }
     }
 }

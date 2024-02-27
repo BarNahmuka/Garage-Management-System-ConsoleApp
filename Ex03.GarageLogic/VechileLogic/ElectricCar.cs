@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     class ElectricCar: ElectricVehicle
     {
@@ -17,6 +17,14 @@ namespace VechileLogic
         public Car Car
         {
             get { return m_Car; }
+        }
+        public override string ToString()
+        {
+            return string.Format(
+                @"{0}
+{1}",
+                base.ToString(),
+                m_Car.ToString());
         }
     }
 }

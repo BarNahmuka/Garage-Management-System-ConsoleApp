@@ -42,9 +42,9 @@
     <Compile Include="Menu.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VechileLogic\VehicleLogic.csproj">
+    <ProjectReference Include="..\VechileLogic\Ex03.GarageLogic.csproj">
       <Project>{1d1c92c9-4042-4eaf-b042-dc95f7d6218f}</Project>
-      <Name>VehicleLogic</Name>
+      <Name>Ex03.GarageLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

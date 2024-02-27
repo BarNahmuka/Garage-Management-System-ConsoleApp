@@ -4,29 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     public abstract class Vehicle
     {
-        private String m_Model;
+        private String m_ModelName;
         private String m_LicenseNumber;
         protected float m_EnergyLeft;
         //private List<Wheels;
 
-        public Vehicle(string i_Model, string i_LicenseNumber, float i_EnergyLeft)
+        public Vehicle(string i_ModelName, string i_LicenseNumber, float i_EnergyLeft)
         {
-            m_Model = i_Model;
+            m_ModelName = i_ModelName;
             m_LicenseNumber = i_LicenseNumber;
             m_EnergyLeft = i_EnergyLeft;
         }
 
         public String model
         {
-            get { return m_Model; }
-            set { m_Model = value; }
+            get { return m_ModelName; }
+            set { m_ModelName = value; }
         }
 
-        public String licenseNumber
+        public String LicenseNumber
         {
             get { return m_LicenseNumber; }
             set { m_LicenseNumber = value; }
@@ -36,6 +36,26 @@ namespace VechileLogic
         {
             get { return m_EnergyLeft; }
             set { m_EnergyLeft = value; }
+        }
+        public override bool Equals(object i_Object)
+        {
+            bool equals = false;
+            if (i_Object is Vehicle)
+            {
+                equals = (i_Object as Vehicle).LicenseNumber == m_LicenseNumber;
+            }
+
+            return equals;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder vehicleDataString = new StringBuilder();
+            vehicleDataString.AppendLine(string.Format("Brand name: {0}", m_ModelName));
+            vehicleDataString.AppendLine(string.Format("License plate: {0}", m_LicenseNumber));
+            vehicleDataString.AppendLine(string.Format("Energy left: {0}", m_EnergyLeft));
+
+            return vehicleDataString.ToString();
         }
     }
 }

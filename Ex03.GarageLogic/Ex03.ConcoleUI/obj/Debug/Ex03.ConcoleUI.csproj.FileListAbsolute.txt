@@ -9,3 +9,8 @@ C:\Users\nahmu\OneDrive\מסמכים\GitHub\Garage\Ex03.GarageLogic\Ex03.Concole
 C:\Users\nahmu\OneDrive\מסמכים\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\VechileLogic.pdb
 C:\Users\nahmu\OneDrive\מסמכים\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\VechileLogic.dll.config
 C:\Users\nahmu\OneDrive\מסמכים\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.csproj.CopyComplete
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.csproj.AssemblyReference.cache
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.csproj.CoreCompileInputs.cache
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.exe
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.pdb

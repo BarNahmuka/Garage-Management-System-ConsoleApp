@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VechileLogic;
+using Ex03.GarageLogic;
 
 namespace Ex03.ConcoleUI
 {
     class Menu
     {
-        public static void Main()
+        public Garage m_Garage;
+        public VehicleBuilder m_VehicleBuilder;
+        public GarageVehicleBuilder m_GarageVehicleBuilder;
+
+        public Menu()
+        {
+            m_Garage = new Garage();
+        }
+
+        public void Main()
         {
             Garage garage = new Garage();
             eMenu userInput;
@@ -30,7 +39,14 @@ namespace Ex03.ConcoleUI
             {
                 case eMenu.InsertVehicle:
                     {
-                        optionOneInMenu(garage);
+                        string userInputForLicenseNumber = Console.ReadLine();
+                        //optionOneInMenu(garage);
+                        if (!m_Garage.IsVehicleInGarage(userInputForLicenseNumber))
+                        {
+                            GetVehicleType();
+                            GetVehicleOwenerName();
+                            GetVehicleModel();
+                        }
                     }
                     break;
                 case eMenu.DisplayLicenseNumbers:
@@ -64,88 +80,108 @@ namespace Ex03.ConcoleUI
 
 
         }
-
-        public static void optionOneInMenu(Garage i_garage)
+        public int InputValidate(string i_Userinput, int i_MinOfRange, int i_MaxOfRange)
         {
-            Console.WriteLine("Please enter license number");
-            string licenseNumber = Console.ReadLine();
-
-
-
-            if (i_garage.IsVehicleInGarage(licenseNumber))
+            int.TryParse(i_Userinput, out int ParseResult);
+            while (ParseResult > i_MaxOfRange || ParseResult < i_MinOfRange)
             {
-                Console.WriteLine("The vehicle is already in the garage.");
-                i_garage.ChangeVehicleStatus(licenseNumber, eStatus.Repair);
+                Console.WriteLine("bad parse put new input in range");
+                i_Userinput = Console.ReadLine();
+                int.TryParse(i_Userinput, out ParseResult);
+
             }
-            else
+            return ParseResult;
+        }
+
+        public void GetVehicleType()
+        {
+            int userVehicleType;
+            int userEnergySourceForVehicle;
+            string userInput;
+            Console.WriteLine("Please select your type of vehicle: ");
+            userInput = Console.ReadLine();
+            userVehicleType = InputValidate(userInput, 1, 3);
+
+            switch (userVehicleType)
             {
-                string optionForVehicle = string.Format(
-                    @"Please choose vehicle type from the options
-1.car
-2.truck
-3.motorcycle");
-                Console.WriteLine(optionForVehicle);
-                Enum.TryParse(Console.ReadLine(), out eVehicle userVehicleSelection);
+                case 1:
+                    {
+                        m_VehicleBuilder.setVehicleToCar();
+                    }
+                    break;
+                case 2:
+                    {
+                        m_VehicleBuilder.setVehicleToMotorcycle();
+                    }
+                    break;
+                case 3:
+                    {
+                        m_VehicleBuilder.setVehicleToTruck();
+                    }
+                    break;
+            }
+            Console.WriteLine("Please select your energy source for the vehicle: ");
+            userInput = Console.ReadLine();
+            userEnergySourceForVehicle = InputValidate(userInput, 1, 2);
+            switch (userEnergySourceForVehicle)
+            {
+                case 1:
+                    {
+                        m_VehicleBuilder.setVehicleToElectric();
+                    }
+                    break;
+                case 2:
+                    {
+                        m_VehicleBuilder.setVehicleToGasoline();
+                    }
+                    break;
+            }
+            m_GarageVehicleBuilder.Vehicle = m_VehicleBuilder.CreateVehicle();
+            m_Garage.AddVehicleToGarage(m_GarageVehicleBuilder.CreateVehicleGarage());
 
-                switch (userVehicleSelection)
-                {
-                    case eVehicle.Car:
-                        {
-                            string optionColor = string.Format(
-     @"Please choose vehicle type from the options
-1.Blue
-2.White
-3.Red
-4.Yellow");
-                            Console.WriteLine(optionColor);
-                            Enum.TryParse(Console.ReadLine(), out eCarColor color);
-                            Console.WriteLine("");
+        }
 
-                            Console.WriteLine("Gasoline or electric?" + Environment.NewLine + "1.Gasoline" + Environment.NewLine + "2.Electric");
-                            Enum.TryParse(Console.ReadLine(), out eEnergy energyType);
-                            switch (energyType)
-                            {
-                                case eEnergy.electricity:
-                                    {
+        public void GetVehicleModel()
+        {
+            Console.Write("Please enter Model name: ");
+            try
+            {
+                m_VehicleBuilder.ModelName = Console.ReadLine();
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                GetVehicleModel();
+            }
+        }
 
-                                    }
-                                    break;
-                                case eEnergy.Gasoline:
-                                    {
-
-                                    }
-                                    break;
-                            }
-                        }
-                        break;
-                    case eVehicle.Motorcycle:
-                        {
-                            Console.WriteLine("Gasoline or electric?" + Environment.NewLine + "1.Gasoline" + Environment.NewLine + "2.Electric");
-                            Enum.TryParse(Console.ReadLine(), out eEnergy energyType);
-                            switch (energyType)
-                            {
-                                case eEnergy.electricity:
-                                    {
-
-                                    }
-                                    break;
-                                case eEnergy.Gasoline:
-                                    {
-
-                                    }
-                                    break;
-                            }
-                        }
-                        break;
-                    case eVehicle.Truck:
-                        {
-
-                        }
-                        break;
-
-                }
+        private void GetVehicleOwenerName()
+        {
+            Console.Write("Please enter owner name: ");
+            try
+            {
+                m_GarageVehicleBuilder.OwnerName = Console.ReadLine();
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                GetVehicleOwenerName();
+            }
+        }
+        private void GetVehicleOwenerPhoneNumber()
+        {
+            Console.Write("Please enter owner name: ");
+            try
+            {
+                m_GarageVehicleBuilder.OwnerPhone = Console.ReadLine();
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                GetVehicleOwenerPhoneNumber();
             }
         }
     }
 }
+
 

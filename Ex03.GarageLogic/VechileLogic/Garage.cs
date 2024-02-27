@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VechileLogic
+namespace Ex03.GarageLogic
 {
     public class Garage
     {
@@ -22,12 +22,12 @@ namespace VechileLogic
 
         private GarageVehicle searchVehicleInGarage(string i_LicensePlate)
         {
-            return m_VehiclesInGarage.Find(GarageVehicle => GarageVehicle.Vehicle.licenseNumber == i_LicensePlate);
+            return m_VehiclesInGarage.Find(GarageVehicle => GarageVehicle.Vehicle.LicenseNumber == i_LicensePlate);
         }
 
         public void AddVehicleToGarage(GarageVehicle i_GarageVehicle)
         {
-            if(searchVehicleInGarage(i_GarageVehicle.Vehicle.licenseNumber) == null)
+            if(searchVehicleInGarage(i_GarageVehicle.Vehicle.LicenseNumber) == null)
             {
                 m_VehiclesInGarage.Add(i_GarageVehicle);
             }
@@ -52,7 +52,7 @@ namespace VechileLogic
             StringBuilder licenseNumbersString = new StringBuilder();
             if (i_Status == null)
             {
-                m_VehiclesInGarage.ForEach(garageVehicle => licenseNumbersString.AppendLine(garageVehicle.Vehicle.licenseNumber));
+                m_VehiclesInGarage.ForEach(garageVehicle => licenseNumbersString.AppendLine(garageVehicle.Vehicle.LicenseNumber));
             }
             else
             {
@@ -60,7 +60,7 @@ namespace VechileLogic
                 {
                     if (garageVehicle.Status.Equals(i_Status))
                     {
-                        licenseNumbersString.AppendLine(garageVehicle.Vehicle.licenseNumber);
+                        licenseNumbersString.AppendLine(garageVehicle.Vehicle.LicenseNumber);
                     }
                 }
             }
