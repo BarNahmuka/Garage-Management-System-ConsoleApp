@@ -2,3 +2,6 @@ C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\Ex0
 C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\Ex03.GarageLogic.csproj.CoreCompileInputs.cache
 C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\VechileLogic.dll
 C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\obj\Debug\VechileLogic.pdb
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\bin\Debug\VechileLogic.dll.config
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\bin\Debug\VechileLogic.dll
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\VechileLogic\bin\Debug\VechileLogic.pdb

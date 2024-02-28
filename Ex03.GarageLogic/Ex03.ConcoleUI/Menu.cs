@@ -13,16 +13,19 @@ namespace Ex03.ConcoleUI
         public VehicleBuilder m_VehicleBuilder;
         public GarageVehicleBuilder m_GarageVehicleBuilder;
 
-        public Menu()
+        public  Menu()
         {
             m_Garage = new Garage();
+            m_VehicleBuilder = new VehicleBuilder();
+            m_GarageVehicleBuilder = new GarageVehicleBuilder();
+
         }
 
-        public void Main()
+        public void MenuScreen()
         {
-            Garage garage = new Garage();
+            
             eMenu userInput;
-            string menu = string.Format(
+            string ShowMenu = string.Format(
     @"Welcome, please choose one of the options
 1. Insert a new car to the garage
 2. List of all the vehicles in the garage by license number
@@ -33,7 +36,7 @@ namespace Ex03.ConcoleUI
 7. View full vehicle information 
 8. exit program ");
 
-            Console.WriteLine(menu);
+            Console.WriteLine(ShowMenu);
             Enum.TryParse(Console.ReadLine(), out userInput);
             switch (userInput)
             {
@@ -179,7 +182,7 @@ namespace Ex03.ConcoleUI
         }
         private void GetVehicleOwenerPhoneNumber()
         {
-            Console.Write("Please enter owner name: ");
+            Console.Write("Please enter owner Phone Number: ");
             try
             {
                 m_GarageVehicleBuilder.OwnerPhone = Console.ReadLine();

@@ -14,3 +14,10 @@ C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\E
 C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.csproj.CoreCompileInputs.cache
 C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.exe
 C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.pdb
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\Ex03.ConcoleUI.exe.config
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\Ex03.ConcoleUI.exe
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\Ex03.ConcoleUI.pdb
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\VechileLogic.dll
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\VechileLogic.pdb
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\bin\Debug\VechileLogic.dll.config
+C:\Users\Gal\Documents\GitHub\Garage\Ex03.GarageLogic\Ex03.ConcoleUI\obj\Debug\Ex03.ConcoleUI.csproj.CopyComplete
