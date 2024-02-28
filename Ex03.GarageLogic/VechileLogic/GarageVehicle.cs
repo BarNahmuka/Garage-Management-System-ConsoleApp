@@ -45,7 +45,7 @@ namespace Ex03.GarageLogic
             return string.Format(
                 @"Owner name: {0}
 Owner phone: {1}
-Car treatment status: {2}
+Car treatment status: {2},
 {3}",
                 m_OwnerName,
                 m_OwnerPhone,

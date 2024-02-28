@@ -8,7 +8,7 @@ namespace Ex03.GarageLogic
 {
     public enum eStatus
     {
-        Fixed,
+        Fixed = 1,
         Repair,
         Payed
     }

@@ -56,11 +56,15 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             return string.Format(
-                "Gasoline type: {0}, Current Gasoline amount: {1}, Max Gasoline amount: {2}, {3}",
+                @"{0}
+Gasoline type: {1}
+Current Gasoline amount: {2}
+Max Gasoline amount: {3}",
+                base.ToString(),
                 m_GasolineType,
                 m_CurrentGasInTankPerLiter,
-                m_MaxGasInTankPerLiter,
-                base.ToString());
+                m_MaxGasInTankPerLiter
+                );
         }
     }
 }

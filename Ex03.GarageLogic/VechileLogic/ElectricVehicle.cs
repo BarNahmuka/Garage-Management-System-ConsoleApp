@@ -10,7 +10,6 @@ namespace Ex03.GarageLogic
     {
         float m_BatteryTimeLeftPerHours;
         float m_BatteryTimeMaxPerHours;
-
         public ElectricVehicle(String i_Model, String i_LicenseNumber, float i_EnergyLeft, float i_BatteryTimeLeftPerHours, float i_BatteryTimeMaxPerHours) : base(i_Model, i_LicenseNumber, i_EnergyLeft)
         {
             m_BatteryTimeLeftPerHours = i_BatteryTimeLeftPerHours;
@@ -19,7 +18,7 @@ namespace Ex03.GarageLogic
 
         public void ChargeBattery(float i_HoursToCharge)
         {
-            if(i_HoursToCharge + m_BatteryTimeLeftPerHours <= m_BatteryTimeMaxPerHours)
+            if (i_HoursToCharge + m_BatteryTimeLeftPerHours <= m_BatteryTimeMaxPerHours)
             {
                 m_BatteryTimeLeftPerHours = i_HoursToCharge + m_BatteryTimeLeftPerHours;
                 m_EnergyLeft = (m_BatteryTimeLeftPerHours / m_BatteryTimeLeftPerHours) * 100;
@@ -41,16 +40,13 @@ namespace Ex03.GarageLogic
         }
         public override string ToString()
         {
-            StringBuilder electricVehicleDataString = new StringBuilder(base.ToString());
-            electricVehicleDataString.AppendLine(
-                string.Format(
-                    "Max battery time: {0}, Current battery time left: {1}, {2}",
-                    m_BatteryTimeLeftPerHours,
-                    m_BatteryTimeMaxPerHours,
-                    base.ToString()));
-
-            return electricVehicleDataString.ToString();
+            return string.Format(@"{0}
+Max battery time: {1}
+Current battery time left: {2}",
+                base.ToString(),
+                m_BatteryTimeLeftPerHours,
+                m_BatteryTimeMaxPerHours);
         }
-
+   
     }
 }

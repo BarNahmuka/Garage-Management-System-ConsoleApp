@@ -20,7 +20,7 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public static void isStringContainsOnlyLetters(string i_StringToCheck)
+        public static void CheckIfStringContainsOnlyLetters(string i_StringToCheck)
         {
             IsEmptyOrNullString(i_StringToCheck);
             foreach (char character in i_StringToCheck)
@@ -37,14 +37,14 @@ namespace Ex03.GarageLogic
             return new GarageVehicle(m_OwnerName, m_OwnerPhone, m_Vehicle);
         }
 
-        private void phoneNumberValidation(string i_StringToCheck)
+        public static void CheckIfStringContainsOnlyDigits(string i_StringToCheck)
         {
             IsEmptyOrNullString(i_StringToCheck);
             foreach (char character in i_StringToCheck)
             {
                 if (!char.IsDigit(character))
                 {
-                    throw new FormatException("Phone number must contain only digits");
+                    throw new FormatException("Must contain only digits");
                 }
             }
         }
@@ -54,7 +54,7 @@ namespace Ex03.GarageLogic
             get { return m_OwnerName; }
             set
             {
-                isStringContainsOnlyLetters(value);
+                CheckIfStringContainsOnlyLetters(value);
                 m_OwnerName = value;
             }
         }
@@ -64,7 +64,7 @@ namespace Ex03.GarageLogic
             get { return m_OwnerPhone; }
             set
             {
-                phoneNumberValidation(value);
+                CheckIfStringContainsOnlyDigits(value);
                 m_OwnerPhone = value;
             }
         }

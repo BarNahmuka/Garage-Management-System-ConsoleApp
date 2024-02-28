@@ -13,17 +13,15 @@ namespace Ex03.ConcoleUI
         public VehicleBuilder m_VehicleBuilder;
         public GarageVehicleBuilder m_GarageVehicleBuilder;
 
-        public  Menu()
+        public Menu()
         {
             m_Garage = new Garage();
             m_VehicleBuilder = new VehicleBuilder();
             m_GarageVehicleBuilder = new GarageVehicleBuilder();
-
         }
 
         public void MenuScreen()
         {
-            
             eMenu userInput;
             string ShowMenu = string.Format(
     @"Welcome, please choose one of the options
@@ -42,9 +40,7 @@ namespace Ex03.ConcoleUI
             {
                 case eMenu.InsertVehicle:
                     {
-                        //optionOneInMenu(garage);
-                        string userInputForLicenseNumber = Console.ReadLine();
-                        
+                        String userInputForLicenseNumber = GetLicenseNumber();
                         if (!m_Garage.IsVehicleInGarage(userInputForLicenseNumber))
                         {
                             GetVehicleType();
@@ -54,12 +50,11 @@ namespace Ex03.ConcoleUI
                             m_VehicleBuilder.LicenseNumber = userInputForLicenseNumber;
                             m_GarageVehicleBuilder.Vehicle = m_VehicleBuilder.CreateVehicle();
                             m_Garage.AddVehicleToGarage(m_GarageVehicleBuilder.CreateVehicleGarage());
-
                         }
                         else
                         {
-                            Console.WriteLine("Vehicl in Garage changing status to repair");
-                            m_Garage.ChangeVehicleStatus(userInputForLicenseNumber,eStatus.Repair);
+                            Console.WriteLine("Vehicle in Garage. Changing status to repair");
+                            m_Garage.ChangeVehicleStatus(userInputForLicenseNumber, eStatus.Repair);
                         }
                     }
                     break;
@@ -85,72 +80,103 @@ namespace Ex03.ConcoleUI
                     { }
                     break;
                 case eMenu.DisplayInfo:
-                    { }
+                    {
+                        String userInputForLicenseNumber = GetLicenseNumber();
+                        if (m_Garage.IsVehicleInGarage(userInputForLicenseNumber))
+                        {
+                            getDisplayInfo(userInputForLicenseNumber);
+                        }
+                    }
                     break;
             }
-            // call menu again
-
+        
+            //Console.Clear();
+            MenuScreen();
             Console.ReadLine();
 
-
         }
-        public int InputValidate(string i_Userinput, int i_MinOfRange, int i_MaxOfRange)
+        public int GetValidateAndInput(int i_MinOfRange, int i_MaxOfRange)
         {
-            int.TryParse(i_Userinput, out int ParseResult);
+            String userInput = Console.ReadLine();
+            int.TryParse(userInput, out int ParseResult);
+
             while (ParseResult > i_MaxOfRange || ParseResult < i_MinOfRange)
             {
                 Console.WriteLine("bad parse put new input in range");
-                i_Userinput = Console.ReadLine();
-                int.TryParse(i_Userinput, out ParseResult);
+                userInput = Console.ReadLine();
+                int.TryParse(userInput, out ParseResult);
 
             }
             return ParseResult;
         }
 
+        private void printData<T>()
+        {
+            int index = 0;
+            StringBuilder textToPrint = new StringBuilder();
+
+            foreach (string type in Enum.GetNames(typeof(T)))
+            {
+                textToPrint.AppendLine(string.Format("{0}. {1}", ++index, type));
+            }
+
+            Console.Write(textToPrint);
+        }
+
+        public String GetLicenseNumber()
+        {
+            Console.WriteLine("Please enter license number");
+            String userInputForLicenseNumber = Console.ReadLine();
+            try
+            {
+                
+                GarageVehicleBuilder.CheckIfStringContainsOnlyDigits(userInputForLicenseNumber);
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                GetLicenseNumber();
+            }
+            return userInputForLicenseNumber;
+        }
+
         public void GetVehicleType()
         {
             int userVehicleType;
-            int userEnergySourceForVehicle;
             string userInput;
             Console.WriteLine("Please select your type of vehicle: ");
-            userInput = Console.ReadLine();
-            userVehicleType = InputValidate(userInput, 1, 3);
+            printData<eVehicle>();
+            userVehicleType = GetValidateAndInput(1, 3);
 
             switch (userVehicleType)
             {
                 case 1:
                     {
+                        getNumbersOfDoors();
+                        getColor();
                         m_VehicleBuilder.setVehicleToCar();
+                        getEnergySourceDetails();
                     }
                     break;
                 case 2:
                     {
+                        getLicenseType();
+                        getEngineSize();
                         m_VehicleBuilder.setVehicleToMotorcycle();
+                        getEnergySourceDetails();
                     }
                     break;
                 case 3:
                     {
+                        GatHazaredTransferingInformation();
+                        getCargoSize();
                         m_VehicleBuilder.setVehicleToTruck();
-                    }
-                    break;
-            }
-            Console.WriteLine("Please select your energy source for the vehicle: ");
-            userInput = Console.ReadLine();
-            userEnergySourceForVehicle = InputValidate(userInput, 1, 2);
-            switch (userEnergySourceForVehicle)
-            {
-                case 1:
-                    {
-                        m_VehicleBuilder.setVehicleToElectric();
-                    }
-                    break;
-                case 2:
-                    {
                         m_VehicleBuilder.setVehicleToGasoline();
+        
+                        getFuelTankInfo();
                     }
                     break;
             }
-
         }
 
         public void GetVehicleModel()
@@ -193,6 +219,181 @@ namespace Ex03.ConcoleUI
                 GetVehicleOwenerPhoneNumber();
             }
         }
+
+        private void getBatteryDetails()
+        {
+            Console.Write("Please enter battery time left in hours: ");
+
+            float userInputForBattery;
+            try
+            {
+                if (float.TryParse(Console.ReadLine(), out userInputForBattery))
+                {
+                    m_VehicleBuilder.BatteryTimeLeft = userInputForBattery;
+                }
+                else
+                {
+                    getBatteryDetails();
+                }
+
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                getBatteryDetails();
+            }
+        }
+
+        private void getFuelTankInfo()
+        {
+            Console.Write("Please enter fuel left per liters: ");
+
+            float userInputForFuel;
+            try
+            {
+                if (float.TryParse(Console.ReadLine(), out userInputForFuel))
+                {
+                    m_VehicleBuilder.GasVehicleCurrentFuelAmount = userInputForFuel;
+                }
+                else
+                {
+                    getFuelTankInfo();
+                }
+
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                getFuelTankInfo();
+            }
+        }
+
+        private void getNumbersOfDoors()
+        {
+            Console.WriteLine("Please enter how many doors you have in the car between 2-5");
+            m_VehicleBuilder.DoorsAmount = (eNumbersOfDoors)GetValidateAndInput(2, 5);
+        }
+
+        private void getColor()
+        {
+            Console.WriteLine("Please enter your car color");
+            printData<eCarColor>();
+            m_VehicleBuilder.Color = (eCarColor)GetValidateAndInput(1, 4);
+
+        }
+
+        private void getLicenseType()
+        {
+            Console.WriteLine("Please enter your license type of your motorcycle");
+            printData<eLicenseKind>();
+            m_VehicleBuilder.LicenseType = (eLicenseKind)GetValidateAndInput(1, 4);
+        }
+
+        private void getEngineSize()
+        {
+            Console.WriteLine("Please enter your engine size in CM3");
+
+            int userInputForEngineSize;
+            try
+            {
+                if (int.TryParse(Console.ReadLine(), out userInputForEngineSize))
+                {
+                    m_VehicleBuilder.EngineVolume = userInputForEngineSize;
+                }
+                else
+                {
+                    getEngineSize();
+                }
+
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                getEngineSize();
+            }
+        }
+
+        private void GatHazaredTransferingInformation()
+        {
+            String message = string.Format(@"Is transfering hazarads?
+1.yes
+2.no");
+            Console.WriteLine(message);
+            int inputFromTheUser = GetValidateAndInput(1, 2);
+
+            switch (inputFromTheUser)
+            {
+                case 1:
+                    {
+                        m_VehicleBuilder.IsTransferingHazard = true;
+                    }
+                    break;
+                case 2:
+                    {
+                        m_VehicleBuilder.IsTransferingHazard = false;
+                    }
+                    break;
+            }
+        }
+
+        private void getCargoSize()
+        {
+            Console.WriteLine("Please enter truck cargo size");
+
+            float userInputForCragoSize;
+            try
+            {
+                if (float.TryParse(Console.ReadLine(), out userInputForCragoSize))
+                {
+                    m_VehicleBuilder.CargoSize = userInputForCragoSize;
+                }
+                else
+                {
+                    getCargoSize();
+                }
+
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+                getCargoSize();
+            }
+        }
+
+        private void getDisplayInfo(String i_LicenseNumber)
+        {
+            try
+            {
+                Console.WriteLine(m_Garage.getVehicleInformation(i_LicenseNumber));
+            }
+            catch (Exception i_Exception)
+            {
+                Console.WriteLine(i_Exception.Message);
+            }
+        }
+
+        private void getEnergySourceDetails()
+        {
+            Console.WriteLine("Please select your energy source for the vehicle: ");
+            printData<eEnergy>();
+            int userEnergySourceForVehicle = GetValidateAndInput(1, 2);
+            switch (userEnergySourceForVehicle)
+            {
+                case 1:
+                    {
+                        getFuelTankInfo();
+                        m_VehicleBuilder.setVehicleToGasoline();
+                    }
+                    break;
+                case 2:
+                    {
+                        getBatteryDetails();
+                        m_VehicleBuilder.setVehicleToElectric();
+                    }
+                    break;
+            }
+        }
+
     }
 }
 

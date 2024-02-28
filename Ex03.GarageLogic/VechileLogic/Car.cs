@@ -26,5 +26,15 @@ namespace Ex03.GarageLogic
         {
             get { return m_NumbersOfDoors; }
         }
+
+        public override string ToString()
+        {
+            return string.Format(
+                @"Numbers of doors: {1}
+Color: {2}",
+                base.ToString(),
+                m_NumbersOfDoors,
+                m_Color);
+        }
     }
 }

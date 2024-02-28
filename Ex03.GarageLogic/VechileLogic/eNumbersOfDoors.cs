@@ -8,7 +8,7 @@ namespace Ex03.GarageLogic
 {
     public enum eNumbersOfDoors
     {
-        Two,
+        Two = 2,
         Theree,
         Four,
         Five

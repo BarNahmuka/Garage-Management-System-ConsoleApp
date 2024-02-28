@@ -16,7 +16,7 @@ namespace Ex03.GarageLogic
         private const float k_GasMotorcycleMaxFuelAmount = 5.8F;
         private const float k_MotorcycleMaxEngineVolume = 10;
         private const float k_GasCarMaxFuelAmount = 58F;
-        private const float k_GasTruckMaxFuelAmount = 120F;
+        private const float k_GasTruckMaxFuelAmount = 110F;
         private const float k_GasTruckMaxWeight = 15F;
         private float m_GasVehicleCurrentFuelAmount;
         private float m_BatteryTimeLeft;
@@ -32,8 +32,6 @@ namespace Ex03.GarageLogic
         private eNumbersOfDoors m_DoorsAmount;
         private bool m_IsTransferingHazard;
         private float m_CargoSize;
-
-
 
         public eCarColor Color
         {
@@ -130,7 +128,7 @@ namespace Ex03.GarageLogic
             get { return m_ModelName; }
             set
             {
-                GarageVehicleBuilder.isStringContainsOnlyLetters(value);
+                GarageVehicleBuilder.CheckIfStringContainsOnlyLetters(value);
                 m_ModelName = value;
             }
         }
@@ -138,7 +136,10 @@ namespace Ex03.GarageLogic
         public string LicenseNumber
         {
             get { return m_LicenseNumber; }
-            set { m_LicenseNumber = value; }
+            set
+            {
+                m_LicenseNumber = value; 
+            }
         }
 
         public float EnergyLeft
@@ -201,7 +202,6 @@ namespace Ex03.GarageLogic
             VehicleEnergySource = eEnergy.Gasoline;
         }
 
-
         private GasolineTruck createGasTruck()
         {
             m_EnergyLeft = (m_GasVehicleCurrentFuelAmount / k_GasTruckMaxFuelAmount) * 100;
@@ -214,9 +214,7 @@ namespace Ex03.GarageLogic
                 m_GasVehicleCurrentFuelAmount,
                 k_GasTruckMaxFuelAmount,
                 m_IsTransferingHazard,
-                m_CargoSize,
-                m_Color,
-                m_DoorsAmount);
+                m_CargoSize);
         }
 
         private GasolineCar createGasCar()

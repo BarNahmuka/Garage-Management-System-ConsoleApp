@@ -67,5 +67,22 @@ namespace Ex03.GarageLogic
 
             return licenseNumbersString.ToString();
         }
+
+        public String getVehicleInformation(String i_LicenseNumber)
+        {
+            GarageVehicle garageVehicle = searchVehicleInGarage(i_LicenseNumber);
+            String vehicleInfo;
+
+            if(garageVehicle != null)
+            {
+                vehicleInfo = garageVehicle.ToString();
+            }
+            else
+            {
+                throw new Exception("The vehicle not found in the garage");
+            }
+
+            return vehicleInfo;
+        }
     }
 }
