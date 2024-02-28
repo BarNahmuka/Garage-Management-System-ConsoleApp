@@ -39,13 +39,24 @@ namespace Ex03.ConcoleUI
             {
                 case eMenu.InsertVehicle:
                     {
-                        string userInputForLicenseNumber = Console.ReadLine();
                         //optionOneInMenu(garage);
+                        string userInputForLicenseNumber = Console.ReadLine();
+                        
                         if (!m_Garage.IsVehicleInGarage(userInputForLicenseNumber))
                         {
                             GetVehicleType();
-                            GetVehicleOwenerName();
                             GetVehicleModel();
+                            GetVehicleOwenerName();
+                            GetVehicleOwenerPhoneNumber();
+                            m_VehicleBuilder.LicenseNumber = userInputForLicenseNumber;
+                            m_GarageVehicleBuilder.Vehicle = m_VehicleBuilder.CreateVehicle();
+                            m_Garage.AddVehicleToGarage(m_GarageVehicleBuilder.CreateVehicleGarage());
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vehicl in Garage changing status to repair");
+                            m_Garage.ChangeVehicleStatus(userInputForLicenseNumber,eStatus.Repair);
                         }
                     }
                     break;
@@ -136,8 +147,6 @@ namespace Ex03.ConcoleUI
                     }
                     break;
             }
-            m_GarageVehicleBuilder.Vehicle = m_VehicleBuilder.CreateVehicle();
-            m_Garage.AddVehicleToGarage(m_GarageVehicleBuilder.CreateVehicleGarage());
 
         }
 
