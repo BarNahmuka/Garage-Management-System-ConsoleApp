@@ -255,8 +255,8 @@ namespace Ex03.GarageLogic
                 m_LicenseNumber,
                 //m_Wheels,
                 m_EnergyLeft,
-                k_ElectricCarMaxBatteryTime,
                 m_BatteryTimeLeft,
+                k_ElectricCarMaxBatteryTime,
                 m_Color,
                 DoorsAmount);
         }
@@ -269,8 +269,8 @@ namespace Ex03.GarageLogic
                 m_LicenseNumber,
                 //m_Wheels,
                 m_EnergyLeft,
-                k_ElectricMotorcycleMaxBatteyTime,
                 m_BatteryTimeLeft,
+                k_ElectricMotorcycleMaxBatteyTime,
                 m_LicenseType,
                 m_EngineVolume);
         }

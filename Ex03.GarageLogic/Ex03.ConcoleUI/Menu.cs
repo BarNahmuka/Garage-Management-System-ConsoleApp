@@ -65,7 +65,7 @@ namespace Ex03.ConcoleUI
                     break;
                 case eMenu.ChangeStatus:
                     {
-
+                        ChangeVehicleStatus(GetLicenseNumber());
                     }
                     break;
                 case eMenu.PumpWheel:
@@ -74,10 +74,31 @@ namespace Ex03.ConcoleUI
                     }
                     break;
                 case eMenu.Refuel:
-                    { }
+                    {
+                        String userInputForLicenseNumber = GetLicenseNumber();
+                        Console.WriteLine("Enter amount of liters you want to refuel");
+                        float.TryParse(Console.ReadLine(), out float literToRefuel);
+                        Console.WriteLine("Enter fuel type of the vehicle ");
+                        printData<eFuel>();
+                        eFuel vehicleFuelType = (eFuel)GetValidateAndInput(1, 4);
+                        try { m_Garage.RefuelGasVehicle(userInputForLicenseNumber, literToRefuel, vehicleFuelType); }
+                        catch(Exception i_exception) {
+                            Console.WriteLine(i_exception.Message);
+                        }
+                    }
+                    
                     break;
                 case eMenu.charge:
-                    { }
+                    {
+                        String userInputForLicenseNumber = GetLicenseNumber();
+                        Console.WriteLine("Enter amount of hours to recharge the battery");
+                        float.TryParse(Console.ReadLine(), out float hoursToCharge); ;
+                        try { m_Garage.RechargeBattery(userInputForLicenseNumber, hoursToCharge); }
+                        catch (Exception i_exception)
+                        {
+                            Console.WriteLine(i_exception.Message);
+                        }
+                    }
                     break;
                 case eMenu.DisplayInfo:
                     {
@@ -139,8 +160,17 @@ namespace Ex03.ConcoleUI
             }
             return userInputForLicenseNumber;
         }
+        public void ChangeVehicleStatus(string LicenseToChangeStatus)
+        {
+            Console.WriteLine("Enter status to change the vehicle to ");
+            printData<eStatus>();
+            eStatus statusToChangeTo = (eStatus)GetValidateAndInput(1,3);
+            m_Garage.ChangeVehicleStatus(LicenseToChangeStatus, statusToChangeTo);
+        }
 
-        public void GetVehicleType()
+
+
+    public void GetVehicleType()
         {
             int userVehicleType;
             string userInput;

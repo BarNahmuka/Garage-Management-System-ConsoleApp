@@ -51,8 +51,8 @@ namespace Ex03.GarageLogic
         public override string ToString()
         {
             StringBuilder vehicleDataString = new StringBuilder();
-            vehicleDataString.AppendLine(string.Format("Brand name: {0}", m_ModelName));
-            vehicleDataString.AppendLine(string.Format("License plate: {0}", m_LicenseNumber));
+            vehicleDataString.AppendLine(string.Format("Model name: {0}", m_ModelName));
+            vehicleDataString.AppendLine(string.Format("License Number: {0}", m_LicenseNumber));
             vehicleDataString.Append(string.Format("Energy left: {0}", m_EnergyLeft));
             return vehicleDataString.ToString();
         }

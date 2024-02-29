@@ -67,6 +67,48 @@ namespace Ex03.GarageLogic
 
             return licenseNumbersString.ToString();
         }
+        public void RefuelGasVehicle(String i_license_number,float i_LitersToRefuel,eFuel i_FuelType)
+        {
+            GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
+            if (garageVehicle != null)
+            {
+                GasolineVehicle gasolineVehicle = garageVehicle.Vehicle as GasolineVehicle;
+                if(gasolineVehicle != null)
+                {
+                    gasolineVehicle.RefuelTank(i_LitersToRefuel, i_FuelType);
+                }
+                else
+                {
+                    throw new Exception("Trying to fuel a vehicl that is not gasoline based");
+                }
+            }
+            else
+            {
+                throw new Exception("Vehicle not found");
+            }
+        }
+
+        public void RechargeBattery(String i_license_number, float i_HoursToCharge)
+        {
+            GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
+
+            if (garageVehicle != null)
+            {
+                ElectricVehicle electricVehicle = garageVehicle.Vehicle as ElectricVehicle;
+                if (electricVehicle != null)
+                {
+                    electricVehicle.ChargeBattery(i_HoursToCharge);
+                }
+                else
+                {
+                    throw new Exception("Trying to Recharge a vehicle that is not electric ");
+                }
+            }
+            else
+            {
+                throw new Exception("Vehicle not found");
+            }
+        }
 
         public String getVehicleInformation(String i_LicenseNumber)
         {

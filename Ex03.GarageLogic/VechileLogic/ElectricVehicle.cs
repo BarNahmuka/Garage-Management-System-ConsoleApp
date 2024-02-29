@@ -21,7 +21,7 @@ namespace Ex03.GarageLogic
             if (i_HoursToCharge + m_BatteryTimeLeftPerHours <= m_BatteryTimeMaxPerHours)
             {
                 m_BatteryTimeLeftPerHours = i_HoursToCharge + m_BatteryTimeLeftPerHours;
-                m_EnergyLeft = (m_BatteryTimeLeftPerHours / m_BatteryTimeLeftPerHours) * 100;
+                m_EnergyLeft = (m_BatteryTimeLeftPerHours / m_BatteryTimeMaxPerHours) * 100;
             }
             else
             {
