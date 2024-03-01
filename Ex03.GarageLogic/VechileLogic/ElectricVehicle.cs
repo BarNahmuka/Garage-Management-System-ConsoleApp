@@ -10,7 +10,7 @@ namespace Ex03.GarageLogic
     {
         float m_BatteryTimeLeftPerHours;
         float m_BatteryTimeMaxPerHours;
-        public ElectricVehicle(String i_Model, String i_LicenseNumber, float i_EnergyLeft, float i_BatteryTimeLeftPerHours, float i_BatteryTimeMaxPerHours) : base(i_Model, i_LicenseNumber, i_EnergyLeft)
+        public ElectricVehicle(String i_Model, String i_LicenseNumber, float i_EnergyLeft, List<Wheel> i_Wheels, float i_BatteryTimeLeftPerHours, float i_BatteryTimeMaxPerHours) : base(i_Model, i_LicenseNumber, i_EnergyLeft, i_Wheels)
         {
             m_BatteryTimeLeftPerHours = i_BatteryTimeLeftPerHours;
             m_BatteryTimeMaxPerHours = i_BatteryTimeMaxPerHours;

@@ -110,6 +110,24 @@ namespace Ex03.GarageLogic
             }
         }
 
+        public void PumpWheels(String i_license_number)
+        {
+            GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
+
+            if (garageVehicle != null)
+            {
+                foreach (Wheel wheel in garageVehicle.m_Vehicle.Wheels)
+                {
+                    wheel.pump(wheel.MaxPressure - wheel.TirePressure);
+                }
+
+            }
+                else
+                {
+                    throw new Exception("Failed to pump");
+                }
+        }
+
         public String getVehicleInformation(String i_LicenseNumber)
         {
             GarageVehicle garageVehicle = searchVehicleInGarage(i_LicenseNumber);

@@ -11,16 +11,17 @@ namespace Ex03.GarageLogic
         private String m_ModelName;
         private String m_LicenseNumber;
         protected float m_EnergyLeft;
-        private List<Wheel;
+        private List<Wheel> m_Wheels;
 
-        public Vehicle(string i_ModelName, string i_LicenseNumber, float i_EnergyLeft)
+        public Vehicle(string i_ModelName, string i_LicenseNumber, float i_EnergyLeft, List<Wheel> i_Wheels)
         {
             m_ModelName = i_ModelName;
             m_LicenseNumber = i_LicenseNumber;
             m_EnergyLeft = i_EnergyLeft;
+            m_Wheels = i_Wheels;
         }
 
-        public String model
+        public String Model
         {
             get { return m_ModelName; }
             set { m_ModelName = value; }
@@ -32,11 +33,19 @@ namespace Ex03.GarageLogic
             set { m_LicenseNumber = value; }
         }
 
-        public float energyLeft
+        public float EnergyLeft
         {
             get { return m_EnergyLeft; }
             set { m_EnergyLeft = value; }
         }
+
+
+        public List<Wheel> Wheels
+        {
+            get { return m_Wheels; }
+            set {m_Wheels = value; }
+        }
+
         public override bool Equals(object i_Object)
         {
             bool equals = false;

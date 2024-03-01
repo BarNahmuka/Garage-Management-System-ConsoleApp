@@ -11,7 +11,7 @@ namespace Ex03.GarageLogic
         bool m_IsTransferingHazard;
         float m_CargoSize;
 
-        public GasolineTruck(String i_Model, String i_LicenseNumber, float i_EnergyLeft, eFuel i_GasolineType, float i_CurrentGasInTankPerLiter, float i_MaxGasInTankPerLiter, bool i_IsTransferingHazard, float i_CargoSize) : base(i_Model, i_LicenseNumber, i_EnergyLeft, i_GasolineType, i_CurrentGasInTankPerLiter, i_MaxGasInTankPerLiter)
+        public GasolineTruck(String i_Model, String i_LicenseNumber, float i_EnergyLeft, List<Wheel> i_Wheels, eFuel i_GasolineType, float i_CurrentGasInTankPerLiter, float i_MaxGasInTankPerLiter, bool i_IsTransferingHazard, float i_CargoSize) : base(i_Model, i_LicenseNumber, i_EnergyLeft, i_Wheels, i_GasolineType, i_CurrentGasInTankPerLiter, i_MaxGasInTankPerLiter)
         {
             m_IsTransferingHazard = i_IsTransferingHazard;
             m_CargoSize = i_CargoSize;

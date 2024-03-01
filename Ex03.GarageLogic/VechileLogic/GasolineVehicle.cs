@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         float m_CurrentGasInTankPerLiter;
         float m_MaxGasInTankPerLiter;
 
-        public GasolineVehicle(String i_Model, String i_LicenseNumber, float i_EnergyLeft, eFuel i_GasolineType, float i_CurrentGasInTankPerLiter, float i_MaxGasInTankPerLiter) : base(i_Model, i_LicenseNumber, i_EnergyLeft)
+        public GasolineVehicle(String i_Model, String i_LicenseNumber, float i_EnergyLeft, List<Wheel> i_Wheels, eFuel i_GasolineType, float i_CurrentGasInTankPerLiter, float i_MaxGasInTankPerLiter) : base(i_Model, i_LicenseNumber, i_EnergyLeft, i_Wheels)
         {
             m_GasolineType = i_GasolineType;
             m_CurrentGasInTankPerLiter = i_CurrentGasInTankPerLiter;
@@ -26,6 +26,7 @@ namespace Ex03.GarageLogic
                 if (i_FuelType == m_GasolineType)
                 {
                     m_CurrentGasInTankPerLiter = m_CurrentGasInTankPerLiter + i_LitersToFuel;
+                    m_EnergyLeft = (m_CurrentGasInTankPerLiter / m_MaxGasInTankPerLiter) * 100;
                 }
                 else
                 {

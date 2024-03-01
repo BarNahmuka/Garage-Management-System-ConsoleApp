@@ -70,34 +70,19 @@ namespace Ex03.ConcoleUI
 					break;
 				case eMenu.PumpWheel:
 					{
-						
+						pumpWheelsInVehicle();
 					}
 					break;
 				case eMenu.Refuel:
 					{
 						String userInputForLicenseNumber = GetLicenseNumber();
-						Console.WriteLine("Enter amount of liters you want to refuel");
-						float.TryParse(Console.ReadLine(), out float literToRefuel);
-						Console.WriteLine("Enter fuel type of the vehicle ");
-						printData<eFuel>();
-						eFuel vehicleFuelType = (eFuel)GetValidateAndInput(1, 4);
-						try { m_Garage.RefuelGasVehicle(userInputForLicenseNumber, literToRefuel, vehicleFuelType); }
-						catch(Exception i_exception) {
-							Console.WriteLine(i_exception.Message);
-						}
+						refuelVehicle(userInputForLicenseNumber);
 					}
 					
 					break;
 				case eMenu.charge:
 					{
-						String userInputForLicenseNumber = GetLicenseNumber();
-						Console.WriteLine("Enter amount of hours to recharge the battery");
-						float.TryParse(Console.ReadLine(), out float hoursToCharge); ;
-						try { m_Garage.RechargeBattery(userInputForLicenseNumber, hoursToCharge); }
-						catch (Exception i_exception)
-						{
-							Console.WriteLine(i_exception.Message);
-						}
+						chargeVehicle();
 					}
 					break;
 				case eMenu.DisplayInfo:
@@ -171,6 +156,7 @@ namespace Ex03.ConcoleUI
 
 		public void GetWheelsManufacurerName()
 		{
+
 		}
 
 		public void GetVehicleType()
@@ -424,6 +410,46 @@ namespace Ex03.ConcoleUI
 						m_VehicleBuilder.setVehicleToElectric();
 					}
 					break;
+			}
+		}
+
+		private void refuelVehicle(String i_userInputForLicenseNumber)
+        {
+			Console.WriteLine("Enter amount of liters you want to refuel");
+			float.TryParse(Console.ReadLine(), out float literToRefuel);
+			Console.WriteLine("Enter fuel type of the vehicle ");
+			printData<eFuel>();
+			eFuel vehicleFuelType = (eFuel)GetValidateAndInput(1, 4);
+			try { m_Garage.RefuelGasVehicle(i_userInputForLicenseNumber, literToRefuel, vehicleFuelType); }
+			catch (Exception i_exception)
+			{
+				Console.WriteLine(i_exception.Message);
+				refuelVehicle(i_userInputForLicenseNumber);
+			}
+		}
+
+		private void chargeVehicle()
+        {
+			String userInputForLicenseNumber = GetLicenseNumber();
+			Console.WriteLine("Enter amount of hours to recharge the battery");
+			float.TryParse(Console.ReadLine(), out float hoursToCharge); ;
+			try { m_Garage.RechargeBattery(userInputForLicenseNumber, hoursToCharge); }
+			catch (Exception i_exception)
+			{
+				Console.WriteLine(i_exception.Message);
+				chargeVehicle();
+			}
+		}
+
+		private void pumpWheelsInVehicle()
+        {
+			Console.WriteLine("Please enter license number");
+			String userInputForLicenseNumber = GetLicenseNumber();
+			try { m_Garage.PumpWheels(userInputForLicenseNumber); }
+			catch (Exception i_exception)
+			{
+				Console.WriteLine(i_exception.Message);
+				pumpWheelsInVehicle();
 			}
 		}
 
