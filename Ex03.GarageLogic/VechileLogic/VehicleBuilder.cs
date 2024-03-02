@@ -148,11 +148,11 @@ namespace Ex03.GarageLogic
             set { m_EnergyLeft = value; }
         }
 
-        /*public List<Wheel> Wheels
+        public List<Wheel> Wheels
         {
             get { return m_Wheels; }
             set { m_Wheels = value; }
-        }*/
+        }
 
         public eLicenseKind LicenseType
         {

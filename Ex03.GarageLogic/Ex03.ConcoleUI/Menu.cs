@@ -104,20 +104,53 @@ namespace Ex03.ConcoleUI
 
 		}
 
-		public int GetValidateAndInput(int i_MinOfRange, int i_MaxOfRange)
+		public int GetIntValidateAndInput(int i_MinOfRange, int i_MaxOfRange)
 		{
-			String userInput = Console.ReadLine();
-			int.TryParse(userInput, out int ParseResult);
+			int ParseResult;
+			string userInput;
 
-			while (ParseResult > i_MaxOfRange || ParseResult < i_MinOfRange)
+			do
 			{
-				Console.WriteLine("bad parse put new input in range");
 				userInput = Console.ReadLine();
-				int.TryParse(userInput, out ParseResult);
+				while (!int.TryParse(userInput, out ParseResult))
+				{
+					Console.WriteLine("Bad input. Please enter an integer.");
+					userInput = Console.ReadLine();
+				}
 
-			}
+				if (ParseResult < i_MinOfRange || ParseResult > i_MaxOfRange)
+				{
+					Console.WriteLine("Input is out of range. Please enter an integer within the specified range.");
+				}
+			} while (ParseResult < i_MinOfRange || ParseResult > i_MaxOfRange);
+
 			return ParseResult;
 		}
+
+		public float GetFloatValidateAndInput(float i_MinOfRange, float i_MaxOfRange)
+		{
+			float ParseResult;
+			string userInput;
+
+			do
+			{
+				userInput = Console.ReadLine();
+				while (!float.TryParse(userInput, out ParseResult))
+				{
+					Console.WriteLine("Bad input. Please enter a number.");
+					userInput = Console.ReadLine();
+				}
+
+				if (ParseResult < i_MinOfRange || ParseResult > i_MaxOfRange)
+				{
+					Console.WriteLine("Input is out of range. Please enter a number within the specified range.");
+				}
+			} while (ParseResult < i_MinOfRange || ParseResult > i_MaxOfRange);
+
+			return ParseResult;
+		}
+
+
 
 		private void printData<T>()
 		{
@@ -152,7 +185,7 @@ namespace Ex03.ConcoleUI
 		{
 			Console.WriteLine("Enter status to change the vehicle to ");
 			printData<eStatus>();
-			eStatus statusToChangeTo = (eStatus)GetValidateAndInput(1, 3);
+			eStatus statusToChangeTo = (eStatus)GetIntValidateAndInput(1, 3);
 			m_Garage.ChangeVehicleStatus(LicenseToChangeStatus, statusToChangeTo);
 		}
 
@@ -162,7 +195,7 @@ namespace Ex03.ConcoleUI
 			string userInput;
 			Console.WriteLine("Please select your type of vehicle: ");
 			printData<eVehicle>();
-			userVehicleType = GetValidateAndInput(1, 3);
+			userVehicleType = GetIntValidateAndInput(1, 3);
 
 			switch (userVehicleType)
 			{
@@ -201,7 +234,7 @@ namespace Ex03.ConcoleUI
 		{
 			Console.WriteLine("Are all the wheels the same?");
 			printData<eQuestion>();
-			int userInputAllTheWheels = GetValidateAndInput(1, 2);
+			int userInputAllTheWheels = GetIntValidateAndInput(1, 2);
 			List<Wheel> wheel = new List<Wheel>(i_NumberOfWheels);
 			m_WheelBuilder.MaxWheelpressure = i_MaxAirPressure;
 
@@ -235,6 +268,7 @@ namespace Ex03.ConcoleUI
 					}
 					break;
 			}
+			m_VehicleBuilder.Wheels = wheel;
 		}
 
 		private void getManufacturerName()
@@ -254,8 +288,7 @@ namespace Ex03.ConcoleUI
 		{
 			try
 			{
-				float.TryParse(Console.ReadLine(), out float userInputForTirePreesure);
-				m_WheelBuilder.TirePressure = userInputForTirePreesure;
+				m_WheelBuilder.TirePressure = GetFloatValidateAndInput(0 ,m_WheelBuilder.MaxWheelpressure);
 			}
 			catch (Exception i_Exception)
 			{
@@ -356,14 +389,14 @@ namespace Ex03.ConcoleUI
 		private void getNumbersOfDoors()
 		{
 			Console.WriteLine("Please enter how many doors you have in the car between 2-5");
-			m_VehicleBuilder.DoorsAmount = (eNumbersOfDoors)GetValidateAndInput(2, 5);
+			m_VehicleBuilder.DoorsAmount = (eNumbersOfDoors)GetIntValidateAndInput(2, 5);
 		}
 
 		private void getColor()
 		{
 			Console.WriteLine("Please enter your car color");
 			printData<eCarColor>();
-			m_VehicleBuilder.Color = (eCarColor)GetValidateAndInput(1, 4);
+			m_VehicleBuilder.Color = (eCarColor)GetIntValidateAndInput(1, 4);
 
 		}
 
@@ -371,7 +404,7 @@ namespace Ex03.ConcoleUI
 		{
 			Console.WriteLine("Please enter your license type of your motorcycle");
 			printData<eLicenseKind>();
-			m_VehicleBuilder.LicenseType = (eLicenseKind)GetValidateAndInput(1, 4);
+			m_VehicleBuilder.LicenseType = (eLicenseKind)GetIntValidateAndInput(1, 4);
 		}
 
 		private void getEngineSize()
@@ -404,7 +437,7 @@ namespace Ex03.ConcoleUI
 1.yes
 2.no");
 			Console.WriteLine(message);
-			int inputFromTheUser = GetValidateAndInput(1, 2);
+			int inputFromTheUser = GetIntValidateAndInput(1, 2);
 
 			switch (inputFromTheUser)
 			{
@@ -461,7 +494,7 @@ namespace Ex03.ConcoleUI
 		{
 			Console.WriteLine("Please select your energy source for the vehicle: ");
 			printData<eEnergy>();
-			int userEnergySourceForVehicle = GetValidateAndInput(1, 2);
+			int userEnergySourceForVehicle = GetIntValidateAndInput(1, 2);
 			switch (userEnergySourceForVehicle)
 			{
 				case 1:
@@ -485,7 +518,7 @@ namespace Ex03.ConcoleUI
 			float.TryParse(Console.ReadLine(), out float literToRefuel);
 			Console.WriteLine("Enter fuel type of the vehicle ");
 			printData<eFuel>();
-			eFuel vehicleFuelType = (eFuel)GetValidateAndInput(1, 4);
+			eFuel vehicleFuelType = (eFuel)GetIntValidateAndInput(1, 4);
 			try { m_Garage.RefuelGasVehicle(i_userInputForLicenseNumber, literToRefuel, vehicleFuelType); }
 			catch (Exception i_exception)
 			{
