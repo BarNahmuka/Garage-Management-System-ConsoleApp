@@ -62,7 +62,7 @@ namespace Ex03.ConcoleUI
 					break;
 				case eMenu.DisplayLicenseNumbers:
 					{
-						//display licenseNumbers
+						DisplayVehiclesInGarage();
 					}
 					break;
 				case eMenu.ChangeStatus:
@@ -92,7 +92,7 @@ namespace Ex03.ConcoleUI
 						String userInputForLicenseNumber = GetLicenseNumber();
 						if (m_Garage.IsVehicleInGarage(userInputForLicenseNumber))
 						{
-							getDisplayInfo(userInputForLicenseNumber);
+							DisplayInfoSpecificLicenseNumber(userInputForLicenseNumber);
 						}
 					}
 					break;
@@ -187,6 +187,34 @@ namespace Ex03.ConcoleUI
 			printData<eStatus>();
 			eStatus statusToChangeTo = (eStatus)GetIntValidateAndInput(1, 3);
 			m_Garage.ChangeVehicleStatus(LicenseToChangeStatus, statusToChangeTo);
+		}
+
+		public void DisplayVehiclesInGarage()
+        {
+			string dataToPrint;
+			Console.WriteLine("Do you wish to filter the vehicles by their status in the garage?");
+			printData<eQuestion>();
+			int userInputForFilter = GetIntValidateAndInput(1, 2);
+			switch (userInputForFilter)
+            {
+				case 1:
+                    {
+						Console.WriteLine("Enter status to change the vehicle to ");
+						printData<eStatus>();
+						eStatus statusForFilter = (eStatus)GetIntValidateAndInput(1, 3);
+						dataToPrint = m_Garage.GetVehiclesLicensePlates(statusForFilter);
+						Console.WriteLine(dataToPrint);
+					}
+					break;
+				case 2:
+                    {
+						dataToPrint = m_Garage.GetVehiclesLicensePlates(null);
+						Console.WriteLine(dataToPrint);
+					}
+					break;
+
+            }
+
 		}
 
 		public void GetVehicleType()
@@ -478,7 +506,7 @@ namespace Ex03.ConcoleUI
 			}
 		}
 
-		private void getDisplayInfo(String i_LicenseNumber)
+		private void DisplayInfoSpecificLicenseNumber(String i_LicenseNumber)
 		{
 			try
 			{
@@ -542,7 +570,6 @@ namespace Ex03.ConcoleUI
 
 		private void pumpWheelsInVehicle()
         {
-			Console.WriteLine("Please enter license number");
 			String userInputForLicenseNumber = GetLicenseNumber();
 			try { m_Garage.PumpWheels(userInputForLicenseNumber); }
 			catch (Exception i_exception)

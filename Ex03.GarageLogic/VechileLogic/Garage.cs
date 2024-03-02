@@ -67,6 +67,7 @@ namespace Ex03.GarageLogic
 
             return licenseNumbersString.ToString();
         }
+
         public void RefuelGasVehicle(String i_license_number, float i_LitersToRefuel, eFuel i_FuelType)
         {
             GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
@@ -110,22 +111,25 @@ namespace Ex03.GarageLogic
             }
         }
 
-        public void PumpWheels(String i_license_number)
+        public void PumpWheels(string i_LicensePlate)
         {
-            GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
-
+            GarageVehicle garageVehicle = searchVehicleInGarage(i_LicensePlate);
             if (garageVehicle != null)
             {
-                foreach (Wheel wheel in garageVehicle.m_Vehicle.Wheels)
+                foreach (Wheel wheel in garageVehicle.Vehicle.Wheels)
                 {
-                    wheel.pump(wheel.MaxPressure - wheel.TirePressure);
+                    float airToAdd = wheel.MaxPressure - wheel.TirePressure;
+                    if (airToAdd != 0)
+                    {
+                        wheel.pump(airToAdd);                    
+                    }
                 }
+            }
+            else
+            {
+                throw new Exception("Failed to pump");
 
             }
-                else
-                {
-                    throw new Exception("Failed to pump");
-                }
         }
 
         public String getVehicleInformation(String i_LicenseNumber)

@@ -20,7 +20,7 @@ namespace Ex03.GarageLogic
 
 		public Wheel CreateWheel()
 		{
-			return new Wheel(m_ManufacturerName, m_MaxPressure, m_TirePressure);
+			return new Wheel(m_ManufacturerName, m_TirePressure, m_MaxPressure);
 		}
 
 		public float TirePressure

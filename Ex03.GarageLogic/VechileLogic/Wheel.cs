@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex03.GarageLogic
 {
-    public struct Wheel
+    public class Wheel
     {
         private String m_ManufacturerName;
         private float m_TirePressure;
@@ -39,6 +39,7 @@ namespace Ex03.GarageLogic
         public float TirePressure
         {
             get { return m_TirePressure; }
+            set { m_TirePressure = value; }
         }
 
         public float MaxPressure
