@@ -51,5 +51,36 @@ namespace Ex03.GarageLogic
 				GarageVehicleBuilder.CheckIfStringContainsOnlyLetters(value);
 				m_ManufacturerName = value; }
 		}
+
+		public int NumberOfWheelsForMotorcycle
+		{
+			get { return k_NumberOfWheelsForMotorcycle; }
+		}
+
+		public int NumberOfWheelsForCar
+		{
+			get { return k_NumberOfWheelsForCar; }
+		}
+
+		public int NumberOfWheelsForTruck
+		{
+			get { return k_NumberOfWheelsForTruck; }
+		}
+
+		public float TruckWheelMaxAirPressure
+		{
+			get { return k_TruckWheelMaxAirPressure; }
+		}
+
+		public float MotorcycleWheelMaxAirPressure
+		{
+			get { return k_MotorcycleWheelMaxAirPressure; }
+		}
+
+		public float CarWheelMaxAirPressure
+		{
+			get { return k_CarWheelMaxAirPressure; }
+		}
+
 	}
 }

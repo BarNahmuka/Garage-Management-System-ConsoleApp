@@ -67,7 +67,7 @@ namespace Ex03.GarageLogic
 
             return licenseNumbersString.ToString();
         }
-        public void RefuelGasVehicle(String i_license_number,float i_LitersToRefuel,eFuel i_FuelType)
+        public void RefuelGasVehicle(String i_license_number, float i_LitersToRefuel, eFuel i_FuelType)
         {
             GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
             if (garageVehicle != null)

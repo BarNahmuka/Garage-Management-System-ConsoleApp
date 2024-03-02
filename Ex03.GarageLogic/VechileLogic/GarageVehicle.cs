@@ -57,6 +57,7 @@ Car treatment status: {2},
         {
             bool isEquals = false;
             GarageVehicle objectToCompareTo = i_Object as GarageVehicle;
+
             if (objectToCompareTo != null)
             {
                 isEquals = m_OwnerName == objectToCompareTo.OwnerPhone

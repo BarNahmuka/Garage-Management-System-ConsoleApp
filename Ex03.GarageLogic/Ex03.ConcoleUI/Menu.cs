@@ -12,12 +12,14 @@ namespace Ex03.ConcoleUI
 		public Garage m_Garage;
 		public VehicleBuilder m_VehicleBuilder;
 		public GarageVehicleBuilder m_GarageVehicleBuilder;
+		public WheelBuilder m_WheelBuilder;
 
 		public Menu()
 		{
 			m_Garage = new Garage();
 			m_VehicleBuilder = new VehicleBuilder();
 			m_GarageVehicleBuilder = new GarageVehicleBuilder();
+			m_WheelBuilder = new WheelBuilder();
 		}
 
 		public void MenuScreen()
@@ -44,7 +46,7 @@ namespace Ex03.ConcoleUI
 						if (!m_Garage.IsVehicleInGarage(userInputForLicenseNumber))
 						{
 							GetVehicleType();
-							GetVehicleModel();
+							getVehicleModel();
 							GetVehicleOwenerName();
 							GetVehicleOwenerPhoneNumber();
 							m_VehicleBuilder.LicenseNumber = userInputForLicenseNumber;
@@ -78,7 +80,7 @@ namespace Ex03.ConcoleUI
 						String userInputForLicenseNumber = GetLicenseNumber();
 						refuelVehicle(userInputForLicenseNumber);
 					}
-					
+
 					break;
 				case eMenu.charge:
 					{
@@ -95,7 +97,7 @@ namespace Ex03.ConcoleUI
 					}
 					break;
 			}
-		
+
 			//Console.Clear();
 			MenuScreen();
 			Console.ReadLine();
@@ -136,7 +138,7 @@ namespace Ex03.ConcoleUI
 			String userInputForLicenseNumber = Console.ReadLine();
 			try
 			{
-				
+
 				GarageVehicleBuilder.CheckIfStringContainsOnlyDigits(userInputForLicenseNumber);
 			}
 			catch (Exception i_Exception)
@@ -150,13 +152,8 @@ namespace Ex03.ConcoleUI
 		{
 			Console.WriteLine("Enter status to change the vehicle to ");
 			printData<eStatus>();
-			eStatus statusToChangeTo = (eStatus)GetValidateAndInput(1,3);
+			eStatus statusToChangeTo = (eStatus)GetValidateAndInput(1, 3);
 			m_Garage.ChangeVehicleStatus(LicenseToChangeStatus, statusToChangeTo);
-		}
-
-		public void GetWheelsManufacurerName()
-		{
-
 		}
 
 		public void GetVehicleType()
@@ -175,6 +172,7 @@ namespace Ex03.ConcoleUI
 						getColor();
 						m_VehicleBuilder.setVehicleToCar();
 						getEnergySourceDetails();
+						getWheelsInformation(m_WheelBuilder.NumberOfWheelsForCar, m_WheelBuilder.CarWheelMaxAirPressure);
 					}
 					break;
 				case 2:
@@ -183,6 +181,7 @@ namespace Ex03.ConcoleUI
 						getEngineSize();
 						m_VehicleBuilder.setVehicleToMotorcycle();
 						getEnergySourceDetails();
+						getWheelsInformation(m_WheelBuilder.NumberOfWheelsForMotorcycle, m_WheelBuilder.MotorcycleWheelMaxAirPressure);
 					}
 					break;
 				case 3:
@@ -191,14 +190,81 @@ namespace Ex03.ConcoleUI
 						getCargoSize();
 						m_VehicleBuilder.setVehicleToTruck();
 						m_VehicleBuilder.setVehicleToGasoline();
-		
 						getFuelTankInfo();
+						getWheelsInformation(m_WheelBuilder.NumberOfWheelsForTruck, m_WheelBuilder.TruckWheelMaxAirPressure);
 					}
 					break;
 			}
 		}
 
-		public void GetVehicleModel()
+		private void getWheelsInformation(int i_NumberOfWheels, float i_MaxAirPressure)
+		{
+			Console.WriteLine("Are all the wheels the same?");
+			printData<eQuestion>();
+			int userInputAllTheWheels = GetValidateAndInput(1, 2);
+			List<Wheel> wheel = new List<Wheel>(i_NumberOfWheels);
+			m_WheelBuilder.MaxWheelpressure = i_MaxAirPressure;
+
+			switch (userInputAllTheWheels)
+			{
+				case 1:
+					{
+						Console.WriteLine("supply information for all wheels");
+						Console.WriteLine("Please enter manufacturer name for all the wheels");
+						getManufacturerName();
+						Console.WriteLine("Please enter tire preesure for all the wheels");
+						getTirePreesure();
+						for (int i = 1; i <= i_NumberOfWheels; i++)
+						{
+							wheel.Add(m_WheelBuilder.CreateWheel());
+
+						}
+					}
+					break;
+				case 2:
+					{
+						for (int i = 1; i <= i_NumberOfWheels; i++)
+						{
+							Console.WriteLine("supply information for wheel number " + i);
+							Console.WriteLine("Please enter manufacturer name for wheel number " + i + ":");
+							getManufacturerName();
+							Console.WriteLine("Please enter tire preesure for wheel number " + i + ":");
+							getTirePreesure();
+							wheel.Add(m_WheelBuilder.CreateWheel());
+						}
+					}
+					break;
+			}
+		}
+
+		private void getManufacturerName()
+		{
+			try
+			{
+				m_WheelBuilder.ManufacturerName = Console.ReadLine();
+			}
+			catch (Exception i_Exception)
+			{
+				Console.WriteLine(i_Exception.Message);
+				getManufacturerName();
+			}
+		}
+
+		private void getTirePreesure()
+		{
+			try
+			{
+				float.TryParse(Console.ReadLine(), out float userInputForTirePreesure);
+				m_WheelBuilder.TirePressure = userInputForTirePreesure;
+			}
+			catch (Exception i_Exception)
+			{
+				Console.WriteLine(i_Exception.Message);
+				getTirePreesure();
+			}
+		}
+
+		private void getVehicleModel()
 		{
 			Console.Write("Please enter Model name: ");
 			try
@@ -208,7 +274,7 @@ namespace Ex03.ConcoleUI
 			catch (Exception i_Exception)
 			{
 				Console.WriteLine(i_Exception.Message);
-				GetVehicleModel();
+				getVehicleModel();
 			}
 		}
 

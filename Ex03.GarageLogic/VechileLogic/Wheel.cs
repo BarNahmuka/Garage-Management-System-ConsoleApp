@@ -45,5 +45,16 @@ namespace Ex03.GarageLogic
         {
             get { return m_MaxPressure; }
         }
+
+        public override string ToString()
+        {
+            return string.Format(
+                @"Manufacturer Name: {0}
+Tire Pressure: {1}
+Max Preesure : {2}",
+                m_ManufacturerName,
+                m_TirePressure,
+                m_MaxPressure);
+        }
     }
 }

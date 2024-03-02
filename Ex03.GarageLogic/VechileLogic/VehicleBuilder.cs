@@ -23,7 +23,7 @@ namespace Ex03.GarageLogic
         private string m_ModelName;
         private string m_LicenseNumber;
         private float m_EnergyLeft;
-        //private List<Wheel> m_Wheels;
+        private List<Wheel> m_Wheels;
         private eEnergy m_VehicleEnergySource;
         private eVehicle m_VehicleType;
         private eLicenseKind m_LicenseType;
@@ -209,7 +209,7 @@ namespace Ex03.GarageLogic
                 m_ModelName,
                 m_LicenseNumber,
                 m_EnergyLeft,
-                //Wheels,
+                m_Wheels,
                 k_GasTruckFuelType,
                 m_GasVehicleCurrentFuelAmount,
                 k_GasTruckMaxFuelAmount,
@@ -224,7 +224,7 @@ namespace Ex03.GarageLogic
                 m_ModelName,
                 m_LicenseNumber,
                 m_EnergyLeft,
-                //m_Wheels,
+                m_Wheels,
                 k_GasCarFuelType,
                 m_GasVehicleCurrentFuelAmount,
                 k_GasCarMaxFuelAmount,
@@ -239,7 +239,7 @@ namespace Ex03.GarageLogic
                 m_ModelName,
                 m_LicenseNumber,
                 m_EnergyLeft,
-                //m_Wheels,
+                m_Wheels,
                 k_GasMotorcycleFuelType,
                 m_GasVehicleCurrentFuelAmount,
                 k_GasMotorcycleMaxFuelAmount,
@@ -253,8 +253,8 @@ namespace Ex03.GarageLogic
             return new ElectricCar(
                 m_ModelName,
                 m_LicenseNumber,
-                //m_Wheels,
                 m_EnergyLeft,
+                m_Wheels,
                 m_BatteryTimeLeft,
                 k_ElectricCarMaxBatteryTime,
                 m_Color,
@@ -267,8 +267,8 @@ namespace Ex03.GarageLogic
             return new ElectricMotorcycle(
                 m_ModelName,
                 m_LicenseNumber,
-                //m_Wheels,
                 m_EnergyLeft,
+                m_Wheels,
                 m_BatteryTimeLeft,
                 k_ElectricMotorcycleMaxBatteyTime,
                 m_LicenseType,

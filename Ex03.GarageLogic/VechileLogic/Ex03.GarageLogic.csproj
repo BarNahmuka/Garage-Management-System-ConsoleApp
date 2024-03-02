@@ -48,6 +48,7 @@
     <Compile Include="ElectricVehicle.cs" />
     <Compile Include="eLicenseKind.cs" />
     <Compile Include="eNumbersOfDoors.cs" />
+    <Compile Include="eQuestion.cs" />
     <Compile Include="eStatus.cs" />
     <Compile Include="eVehicle.cs" />
     <Compile Include="Garage.cs" />

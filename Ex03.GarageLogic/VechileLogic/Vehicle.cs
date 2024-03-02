@@ -39,7 +39,6 @@ namespace Ex03.GarageLogic
             set { m_EnergyLeft = value; }
         }
 
-
         public List<Wheel> Wheels
         {
             get { return m_Wheels; }
@@ -63,6 +62,12 @@ namespace Ex03.GarageLogic
             vehicleDataString.AppendLine(string.Format("Model name: {0}", m_ModelName));
             vehicleDataString.AppendLine(string.Format("License Number: {0}", m_LicenseNumber));
             vehicleDataString.Append(string.Format("Energy left: {0}", m_EnergyLeft));
+
+            foreach(Wheel wheel in m_Wheels)
+            {
+                vehicleDataString.AppendLine(string.Format("Wheel: {0}", wheel.ToString()));
+            }
+
             return vehicleDataString.ToString();
         }
     }
