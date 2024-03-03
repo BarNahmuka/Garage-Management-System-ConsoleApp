@@ -8,28 +8,28 @@ namespace Ex03.GarageLogic
 {
     public class Garage
     {
-        private List<GarageVehicle> m_VehiclesInGarage;
+        private readonly List<GarageVehicle> r_VehiclesInGarage;
 
         public Garage()
         {
-            m_VehiclesInGarage = new List<GarageVehicle>();
+            r_VehiclesInGarage = new List<GarageVehicle>();
         }
 
         public List<GarageVehicle> VehiclesInGarage
         {
-            get { return m_VehiclesInGarage; }
+            get { return r_VehiclesInGarage; }
         }
 
         private GarageVehicle searchVehicleInGarage(string i_LicensePlate)
         {
-            return m_VehiclesInGarage.Find(GarageVehicle => GarageVehicle.Vehicle.LicenseNumber == i_LicensePlate);
+            return r_VehiclesInGarage.Find(GarageVehicle => GarageVehicle.Vehicle.LicenseNumber == i_LicensePlate);
         }
 
         public void AddVehicleToGarage(GarageVehicle i_GarageVehicle)
         {
             if(searchVehicleInGarage(i_GarageVehicle.Vehicle.LicenseNumber) == null)
             {
-                m_VehiclesInGarage.Add(i_GarageVehicle);
+                r_VehiclesInGarage.Add(i_GarageVehicle);
             }
         }
 
@@ -50,13 +50,14 @@ namespace Ex03.GarageLogic
         public string GetVehiclesLicensePlates(eStatus? i_Status)
         {
             StringBuilder licenseNumbersString = new StringBuilder();
+
             if (i_Status == null)
             {
-                m_VehiclesInGarage.ForEach(garageVehicle => licenseNumbersString.AppendLine(garageVehicle.Vehicle.LicenseNumber));
+                r_VehiclesInGarage.ForEach(garageVehicle => licenseNumbersString.AppendLine(garageVehicle.Vehicle.LicenseNumber));
             }
             else
             {
-                foreach (GarageVehicle garageVehicle in m_VehiclesInGarage)
+                foreach (GarageVehicle garageVehicle in r_VehiclesInGarage)
                 {
                     if (garageVehicle.Status.Equals(i_Status))
                     {
@@ -71,6 +72,7 @@ namespace Ex03.GarageLogic
         public void RefuelGasVehicle(String i_license_number, float i_LitersToRefuel, eFuel i_FuelType)
         {
             GarageVehicle garageVehicle = searchVehicleInGarage(i_license_number);
+
             if (garageVehicle != null)
             {
                 GasolineVehicle gasolineVehicle = garageVehicle.Vehicle as GasolineVehicle;
@@ -114,6 +116,7 @@ namespace Ex03.GarageLogic
         public void PumpWheels(string i_LicensePlate)
         {
             GarageVehicle garageVehicle = searchVehicleInGarage(i_LicensePlate);
+
             if (garageVehicle != null)
             {
                 foreach (Wheel wheel in garageVehicle.Vehicle.Wheels)
@@ -121,7 +124,7 @@ namespace Ex03.GarageLogic
                     float airToAdd = wheel.MaxPressure - wheel.TirePressure;
                     if (airToAdd != 0)
                     {
-                        wheel.pump(airToAdd);                    
+                        wheel.Pump(airToAdd);                    
                     }
                 }
             }

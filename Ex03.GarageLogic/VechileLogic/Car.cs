@@ -8,23 +8,23 @@ namespace Ex03.GarageLogic
 {
     class Car
     {
-        private eCarColor m_Color;
-        private eNumbersOfDoors m_NumbersOfDoors;
+        private readonly eCarColor r_Color;
+        private readonly eNumbersOfDoors r_NumbersOfDoors;
 
         public Car(eCarColor i_Color, eNumbersOfDoors i_NumbersOfDoors)
         {
-            m_Color = i_Color;
-            m_NumbersOfDoors = i_NumbersOfDoors;
+            r_Color = i_Color;
+            r_NumbersOfDoors = i_NumbersOfDoors;
         }
 
         public eCarColor Color
         {
-            get { return m_Color; }
+            get { return r_Color; }
         }
 
         public eNumbersOfDoors NumbersOfDoors
         {
-            get { return m_NumbersOfDoors; }
+            get { return r_NumbersOfDoors; }
         }
 
         public override string ToString()
@@ -33,8 +33,8 @@ namespace Ex03.GarageLogic
                 @"Numbers of doors: {1}
 Color: {2}",
                 base.ToString(),
-                m_NumbersOfDoors,
-                m_Color);
+                r_NumbersOfDoors,
+                r_Color);
         }
     }
 }

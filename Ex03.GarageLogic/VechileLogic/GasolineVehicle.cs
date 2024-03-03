@@ -8,25 +8,25 @@ namespace Ex03.GarageLogic
 {
     public abstract class GasolineVehicle : Vehicle
     {
-        eFuel m_GasolineType;
-        float m_CurrentGasInTankPerLiter;
-        float m_MaxGasInTankPerLiter;
+        private readonly eFuel r_GasolineType;
+        private float m_CurrentGasInTankPerLiter;
+        private readonly float r_MaxGasInTankPerLiter;
 
         public GasolineVehicle(String i_Model, String i_LicenseNumber, float i_EnergyLeft, List<Wheel> i_Wheels, eFuel i_GasolineType, float i_CurrentGasInTankPerLiter, float i_MaxGasInTankPerLiter) : base(i_Model, i_LicenseNumber, i_EnergyLeft, i_Wheels)
         {
-            m_GasolineType = i_GasolineType;
+            r_GasolineType = i_GasolineType;
             m_CurrentGasInTankPerLiter = i_CurrentGasInTankPerLiter;
-            m_MaxGasInTankPerLiter = i_MaxGasInTankPerLiter;
+            r_MaxGasInTankPerLiter = i_MaxGasInTankPerLiter;
         }
 
         public void RefuelTank(float i_LitersToFuel , eFuel i_FuelType)
         {
-            if ((m_CurrentGasInTankPerLiter + i_LitersToFuel <= m_MaxGasInTankPerLiter))
+            if ((m_CurrentGasInTankPerLiter + i_LitersToFuel <= r_MaxGasInTankPerLiter))
             {
-                if (i_FuelType == m_GasolineType)
+                if (i_FuelType == r_GasolineType)
                 {
                     m_CurrentGasInTankPerLiter = m_CurrentGasInTankPerLiter + i_LitersToFuel;
-                    m_EnergyLeft = (m_CurrentGasInTankPerLiter / m_MaxGasInTankPerLiter) * 100;
+                    m_EnergyLeft = (m_CurrentGasInTankPerLiter / r_MaxGasInTankPerLiter) * 100;
                 }
                 else
                 {
@@ -35,13 +35,13 @@ namespace Ex03.GarageLogic
             }
             else
             {
-                throw new ValueOutOfRangeException(0, m_MaxGasInTankPerLiter - m_CurrentGasInTankPerLiter);
+                throw new ValueOutOfRangeException(0, r_MaxGasInTankPerLiter - m_CurrentGasInTankPerLiter);
             }
         }
 
         public eFuel GasolineType
         {
-            get { return m_GasolineType; }
+            get { return r_GasolineType; }
         }
 
         public float CurrentGasInTankPerLiter
@@ -51,7 +51,7 @@ namespace Ex03.GarageLogic
 
         public float MaxGasInTankPerLiter
         {
-            get { return m_MaxGasInTankPerLiter; }
+            get { return r_MaxGasInTankPerLiter; }
         }
 
         public override string ToString()
@@ -62,9 +62,9 @@ Gasoline type: {1}
 Current Gasoline amount: {2}
 Max Gasoline amount: {3}",
                 base.ToString(),
-                m_GasolineType,
+                r_GasolineType,
                 m_CurrentGasInTankPerLiter,
-                m_MaxGasInTankPerLiter
+                r_MaxGasInTankPerLiter
                 );
         }
     }

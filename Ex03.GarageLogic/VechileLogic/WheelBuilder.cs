@@ -8,15 +8,15 @@ namespace Ex03.GarageLogic
 {
 	public class WheelBuilder
 	{
-		public const int k_NumberOfWheelsForMotorcycle = 2;
-		public const int k_NumberOfWheelsForCar = 5;
-		public const int k_NumberOfWheelsForTruck = 12;
-		public const float k_TruckWheelMaxAirPressure = 28F;
-		public const float k_MotorcycleWheelMaxAirPressure = 29F;
-		public const float k_CarWheelMaxAirPressure = 30F;
-		public string m_ManufacturerName;
-		public float m_MaxPressure;
-		public float m_TirePressure;
+		private const int k_NumberOfWheelsForMotorcycle = 2;
+		private const int k_NumberOfWheelsForCar = 5;
+		private const int k_NumberOfWheelsForTruck = 12;
+		private const float k_TruckWheelMaxAirPressure = 28F;
+		private const float k_MotorcycleWheelMaxAirPressure = 29F;
+		private const float k_CarWheelMaxAirPressure = 30F;
+		private string m_ManufacturerName;
+		private float m_MaxPressure;
+		private float m_TirePressure;
 
 		public Wheel CreateWheel()
 		{

@@ -204,7 +204,9 @@ namespace Ex03.GarageLogic
 
         private GasolineTruck createGasTruck()
         {
-            m_EnergyLeft = (m_GasVehicleCurrentFuelAmount / k_GasTruckMaxFuelAmount) * 100;
+
+            m_EnergyLeft = calculateEnergyLeft(m_GasVehicleCurrentFuelAmount, k_GasTruckMaxFuelAmount);
+
             return new GasolineTruck(
                 m_ModelName,
                 m_LicenseNumber,
@@ -219,7 +221,8 @@ namespace Ex03.GarageLogic
 
         private GasolineCar createGasCar()
         {
-            m_EnergyLeft = (m_GasVehicleCurrentFuelAmount / k_GasCarMaxFuelAmount) * 100;
+            m_EnergyLeft = calculateEnergyLeft(m_GasVehicleCurrentFuelAmount, k_GasCarMaxFuelAmount);
+
             return new GasolineCar(
                 m_ModelName,
                 m_LicenseNumber,
@@ -234,7 +237,8 @@ namespace Ex03.GarageLogic
 
         private GasolineMotorcycle createGasMotorcycle()
         {
-            m_EnergyLeft = (m_GasVehicleCurrentFuelAmount / k_GasMotorcycleMaxFuelAmount) * 100;
+            m_EnergyLeft = calculateEnergyLeft(m_GasVehicleCurrentFuelAmount, k_GasMotorcycleMaxFuelAmount);
+
             return new GasolineMotorcycle(
                 m_ModelName,
                 m_LicenseNumber,
@@ -249,7 +253,8 @@ namespace Ex03.GarageLogic
 
         private ElectricCar createElectricCar()
         {
-            m_EnergyLeft = (m_BatteryTimeLeft / k_ElectricCarMaxBatteryTime) * 100;
+            m_EnergyLeft = calculateEnergyLeft(m_BatteryTimeLeft, k_ElectricCarMaxBatteryTime);
+
             return new ElectricCar(
                 m_ModelName,
                 m_LicenseNumber,
@@ -263,7 +268,8 @@ namespace Ex03.GarageLogic
 
         private ElectricMotorcycle createElectricMotorcycle()
         {
-            m_EnergyLeft = (m_BatteryTimeLeft / k_ElectricMotorcycleMaxBatteyTime) * 100;
+            m_EnergyLeft = calculateEnergyLeft(m_BatteryTimeLeft, k_ElectricMotorcycleMaxBatteyTime);
+
             return new ElectricMotorcycle(
                 m_ModelName,
                 m_LicenseNumber,
@@ -275,9 +281,15 @@ namespace Ex03.GarageLogic
                 m_EngineVolume);
         }
 
+        private float calculateEnergyLeft(float i_currentEnergyAmount, float i_MaxEnergyAmount)
+        {
+            return (i_currentEnergyAmount / i_MaxEnergyAmount) *100;
+        }
+
         public Vehicle CreateVehicle()
         {
             Vehicle vehicle = null;
+
             switch (m_VehicleType)
             {
                 case eVehicle.Car:

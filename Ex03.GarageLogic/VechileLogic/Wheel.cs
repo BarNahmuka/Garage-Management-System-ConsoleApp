@@ -8,32 +8,32 @@ namespace Ex03.GarageLogic
 {
     public class Wheel
     {
-        private String m_ManufacturerName;
+        private readonly String r_ManufacturerName;
         private float m_TirePressure;
-        private float m_MaxPressure;
+        private readonly float r_MaxPressure;
 
         public Wheel(String i_ManufacturerName, float i_TirePressure, float i_MaxPressure)
         {
-            m_ManufacturerName = i_ManufacturerName;
+            r_ManufacturerName = i_ManufacturerName;
             m_TirePressure = i_TirePressure;
-            m_MaxPressure = i_MaxPressure;
+            r_MaxPressure = i_MaxPressure;
         }
 
-        public void pump(float i_PressureToAdd)
+        public void Pump(float i_PressureToAdd)
         {
-            if (i_PressureToAdd + m_TirePressure <= m_MaxPressure)
+            if (i_PressureToAdd + m_TirePressure <= r_MaxPressure)
             {
                 m_TirePressure = i_PressureToAdd + m_TirePressure;
             }
             else
             {
-                throw new ValueOutOfRangeException(0, m_MaxPressure - m_TirePressure);
+                throw new ValueOutOfRangeException(0, r_MaxPressure - m_TirePressure);
             }
         }
 
         public string ManufacturerName
         {
-            get { return m_ManufacturerName; }
+            get { return r_ManufacturerName; }
         }
 
         public float TirePressure
@@ -44,18 +44,16 @@ namespace Ex03.GarageLogic
 
         public float MaxPressure
         {
-            get { return m_MaxPressure; }
+            get { return r_MaxPressure; }
         }
 
         public override string ToString()
         {
             return string.Format(
-                @"Manufacturer Name: {0}
-Tire Pressure: {1}
-Max Preesure : {2}",
-                m_ManufacturerName,
+                @"Manufacturer Name: {0}, Tire Pressure: {1}, Max Preesure : {2}",
+                r_ManufacturerName,
                 m_TirePressure,
-                m_MaxPressure);
+                r_MaxPressure);
         }
     }
 }

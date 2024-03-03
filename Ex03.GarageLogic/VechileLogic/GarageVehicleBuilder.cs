@@ -12,7 +12,7 @@ namespace Ex03.GarageLogic
         private string m_OwnerPhone;
         private Vehicle m_Vehicle;
 
-        public static void IsEmptyOrNullString(string i_String)
+        private static void isEmptyOrNullString(string i_String)
         {
             if (string.IsNullOrEmpty(i_String))
             {
@@ -22,7 +22,8 @@ namespace Ex03.GarageLogic
 
         public static void CheckIfStringContainsOnlyLetters(string i_StringToCheck)
         {
-            IsEmptyOrNullString(i_StringToCheck);
+            isEmptyOrNullString(i_StringToCheck);
+
             foreach (char character in i_StringToCheck)
             {
                 if (!char.IsLetter(character))
@@ -39,7 +40,8 @@ namespace Ex03.GarageLogic
 
         public static void CheckIfStringContainsOnlyDigits(string i_StringToCheck)
         {
-            IsEmptyOrNullString(i_StringToCheck);
+            isEmptyOrNullString(i_StringToCheck);
+
             foreach (char character in i_StringToCheck)
             {
                 if (!char.IsDigit(character))

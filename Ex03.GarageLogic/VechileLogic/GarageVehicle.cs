@@ -8,26 +8,26 @@ namespace Ex03.GarageLogic
 {
     public class GarageVehicle
     {
-        public Vehicle m_Vehicle;
-        private string m_OwnerName;
-        private string m_OwnerPhone;
+        private readonly Vehicle r_Vehicle;
+        private readonly string r_OwnerName;
+        private readonly string r_OwnerPhone;
         private eStatus m_Status;
 
         public GarageVehicle(string i_OwnerName, string i_OwnerPhone, Vehicle i_Vehicle)
         {
-            m_Vehicle = i_Vehicle;
-            m_OwnerName = i_OwnerName;
-            m_OwnerPhone = i_OwnerPhone;
+            r_Vehicle = i_Vehicle;
+            r_OwnerName = i_OwnerName;
+            r_OwnerPhone = i_OwnerPhone;
             m_Status = eStatus.Repair;
         }
         public string OwnerName
         {
-            get { return m_OwnerName; }
+            get { return r_OwnerName; }
         }
 
         public string OwnerPhone
         {
-            get { return m_OwnerPhone; }
+            get { return r_OwnerPhone; }
         }
 
         public eStatus Status
@@ -38,7 +38,7 @@ namespace Ex03.GarageLogic
 
         public Vehicle Vehicle
         {
-            get { return m_Vehicle; }
+            get { return r_Vehicle; }
         }
 
         public override string ToString()
@@ -48,10 +48,10 @@ namespace Ex03.GarageLogic
 Owner phone: {1}
 Car treatment status: {2},
 {3}",
-                m_OwnerName,
-                m_OwnerPhone,
+                r_OwnerName,
+                r_OwnerPhone,
                 m_Status,
-                m_Vehicle.ToString());
+                r_Vehicle.ToString());
         }
 
         public override bool Equals(object i_Object)
@@ -61,9 +61,9 @@ Car treatment status: {2},
 
             if (objectToCompareTo != null)
             {
-                isEquals = m_OwnerName == objectToCompareTo.OwnerPhone
-                    && m_OwnerName == objectToCompareTo.OwnerName
-                    && m_Vehicle.Equals(objectToCompareTo.Vehicle);
+                isEquals = r_OwnerName == objectToCompareTo.OwnerPhone
+                    && r_OwnerName == objectToCompareTo.OwnerName
+                    && r_Vehicle.Equals(objectToCompareTo.Vehicle);
             }
 
             return isEquals;
