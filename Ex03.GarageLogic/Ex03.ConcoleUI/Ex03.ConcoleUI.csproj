@@ -36,9 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="eEnergy.cs" />
     <Compile Include="eMenu.cs" />
-    <Compile Include="eVehicle.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>

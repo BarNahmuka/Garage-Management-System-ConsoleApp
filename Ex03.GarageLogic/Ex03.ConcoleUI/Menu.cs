@@ -277,7 +277,7 @@ namespace Ex03.ConcoleUI
 					break;
 				case eVehicle.Truck:
 					{
-						gatHazaredTransferingInformation();
+						getHazaredTransferingInformation();
 						getCargoSize();
 						r_VehicleBuilder.setVehicleToTruck();
 						r_VehicleBuilder.setVehicleToGasoline();
@@ -495,7 +495,7 @@ namespace Ex03.ConcoleUI
 			}
 		}
 
-		private void gatHazaredTransferingInformation()
+		private void getHazaredTransferingInformation()
 		{
 			Console.WriteLine("Is transfering hazarads?");
 			printData<eQuestion>();
