@@ -14,7 +14,7 @@ The project is structured around a comprehensive Object-Oriented Programming (OO
 Additionally, the system enforces a clear separation between the core logic (backend) and the user interface (UI) for enhanced maintainability and scalability. 
 Furthermore, it is engineered to be highly adaptable, allowing for the seamless integration of new vehicle types through the application of the Factory Design Pattern.
 ## How to Run:
-- Clone the Repository: git clone
+- Clone the Repository: git clone https://github.com/BarNahmuka/Garage-Management-System-ConsoleApp
 - Open the project in Visual Studio.
 - Build the logic app.
 - Build and run the UI app.
